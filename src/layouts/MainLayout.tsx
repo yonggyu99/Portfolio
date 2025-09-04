@@ -8,9 +8,13 @@ interface MainLayoutProps {
 
 const MainLayout = ({ children }: MainLayoutProps) => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
       <Header />
-      <main className="pt-24 pb-24">{children}</main>
+
+      <main className="flex items-center justify-center min-h-screen pt-20 pb-20">
+        {children}
+      </main>
+
       <Footer />
     </div>
   );

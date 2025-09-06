@@ -9,6 +9,7 @@ export default {
         danger: '#dc3545',
         background: '#0a192f',
         'background-light': '#1a2332',
+        line: '#5B7784',
       }
     }
   },

@@ -16,7 +16,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-2 z-50 px-8 py-6">
+    <header className="fixed top-0 left-0 right-0 z-50 px-8 py-6 backdrop-blur-sm">
       <nav className="flex justify-between items-center">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

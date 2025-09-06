@@ -11,7 +11,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
     <div className="min-h-screen bg-background relative">
       <Header />
 
-      <main className="flex items-center justify-center min-h-screen pt-20 pb-20">
+      <main className="flex flex-col items-center justify-start pt-20 pb-20">
         {children}
       </main>
 

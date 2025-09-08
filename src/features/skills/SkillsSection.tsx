@@ -5,13 +5,19 @@ import { skillsData, categories } from './data/skillsData';
 const SkillsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState('Language');
 
+  const handleCategoryClick = (category: string) => {
+    const currentScrollY = window.scrollY;
+    setSelectedCategory(category);
+    setTimeout(() => window.scrollTo(0, currentScrollY), 0);
+  };
+
   return (
     <div
       id="skills"
-      className="w-full max-w-6xl px-8 min-h-screen flex flex-col justify-center"
+      className="w-full max-w-6xl px-8 min-h-screen flex flex-col"
     >
       {/* Section Title */}
-      <div className="mb-28 text-left">
+      <div className="mb-28 text-left pt-24">
         <h2 className="text-primary text-4xl font-bold mb-4">
           <span className="text-secondary">02. </span>
           Skills
@@ -40,7 +46,7 @@ const SkillsSection = () => {
                 )}
 
                 <button
-                  onClick={() => setSelectedCategory(category)}
+                  onClick={() => handleCategoryClick(category)}
                   className={`text-left text-xl px-6 py-3 ml-8 transition-all duration-300 ${
                     selectedCategory === category
                       ? 'text-secondary'
@@ -55,7 +61,7 @@ const SkillsSection = () => {
         </div>
 
         {/* Right Skills Grid */}
-        <div className="flex-1 space-y-8">
+        <div className="flex-1 space-y-8 min-h-[600px]">
           {skillsData[selectedCategory]?.map((skill, index) => (
             <SkillCard
               key={index}

@@ -22,21 +22,34 @@ const SkillsSection = () => {
       <div className="flex gap-24">
         {/* Left Category Tabs */}
         <div className="flex">
-          <div className="w-0.5 bg-line mr-8 flex-shrink-0 self-stretch"></div>
-          
-          <div className="flex flex-col space-y-6 min-w-[200px]">
+          <div className="relative flex flex-col space-y-6 min-w-[200px]">
+            {/* Background line - only spans the height of the buttons */}
+            <div
+              className="absolute left-0 w-0.5 bg-line"
+              style={{
+                top: '0px',
+                height: `${categories.length * 60 + (categories.length - 1) * 24}px`,
+              }}
+            ></div>
+
             {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`text-left text-xl px-6 py-3 transition-all duration-300 ${
-                  selectedCategory === category
-                    ? 'text-secondary bg-secondary bg-opacity-10'
-                    : 'text-line hover:text-secondary hover:bg-secondary hover:bg-opacity-5'
-                }`}
-              >
-                {category}
-              </button>
+              <div key={category} className="relative">
+                {/* Highlight bar for selected item */}
+                {selectedCategory === category && (
+                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-secondary transition-all duration-300"></div>
+                )}
+
+                <button
+                  onClick={() => setSelectedCategory(category)}
+                  className={`text-left text-xl px-6 py-3 ml-8 transition-all duration-300 ${
+                    selectedCategory === category
+                      ? 'text-secondary'
+                      : 'text-line hover:text-secondary'
+                  }`}
+                >
+                  {category}
+                </button>
+              </div>
             ))}
           </div>
         </div>

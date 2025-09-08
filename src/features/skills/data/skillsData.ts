@@ -24,6 +24,22 @@ export const skillsData: SkillCategory = {
       description:
         'ES6+ 문법을 활용하여동적인 웹 애플리케이션을 개발할 수 있습니다.',
     },
+    {
+      name: 'JavaScript',
+      description:
+        'ES6+ 문법을 활용하여동적인 웹 애플리케이션을 개발할 수 있습니다.',
+    },
+    {
+      name: 'JavaScript',
+      description:
+        'ES6+ 문법을 활용하여동적인 웹 애플리케이션을 개발할 수 있습니다.',
+    },
+    {
+      name: 'JavaScript',
+      description:
+        'ES6+ 문법을 활용하여동적인 웹 애플리케이션을 개발할 수 있습니다.',
+    },
+    
   ],
   Frontend: [
     {

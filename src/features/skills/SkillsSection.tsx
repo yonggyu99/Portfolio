@@ -47,7 +47,7 @@ const SkillsSection = () => {
 
                 <button
                   onClick={() => handleCategoryClick(category)}
-                  className={`text-left text-xl px-6 py-3 ml-8 transition-all duration-300 ${
+                  className={`text-left text-xl px-6 py-3 ml-2 transition-all duration-300 ${
                     selectedCategory === category
                       ? 'text-secondary'
                       : 'text-line hover:text-secondary'
@@ -61,7 +61,7 @@ const SkillsSection = () => {
         </div>
 
         {/* Right Skills Grid */}
-        <div className="flex-1 space-y-8 min-h-[600px]">
+        <div className="flex-1 space-y-12 min-h-[600px]">
           {skillsData[selectedCategory]?.map((skill, index) => (
             <SkillCard
               key={index}

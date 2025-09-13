@@ -68,6 +68,7 @@ const SkillsSection = () => {
               name={skill.name}
               description={skill.description}
               icon={skill.icon}
+              color={skill.color}
             />
           ))}
         </div>

@@ -10,42 +10,60 @@ export interface Project {
 
 export const projectsData: Project[] = [
   {
-    category: "Team Projects",
-    title: "IT:PLACE",
-    period: "2025.07.28~2025.08.12",
-    description: "IT 분야 취업을 준비하는 사람들을 위한 종합 플랫폼입니다. 면접 질문, 기술 스택 정보, 스터디 그룹 매칭 등 다양한 기능을 제공하여 취업 준비생들의 성공적인 취업을 돕습니다. React와 Spring Boot를 사용하여 개발했으며, 실시간 채팅과 화상 면접 기능도 포함되어 있습니다.",
+    category: 'Team Projects',
+    title: 'IT:PLACE',
+    period: '2025.06.30~2025.08.08',
+    description:
+      'ItPlace는 사용자의 위치를 기반으로 주변 가맹점의 멤버십 혜택을 실시간으로 제공하는 지도 플랫폼입니다. 카카오맵 API와 AI 추천 시스템을 활용하여 개인 맞춤형 혜택을 제공하고, 복잡한 상태 관리와 최적화된 UX/UI를 통해 직관적인 사용자 경험을 제공합니다.',
     images: [
-      "/images/projects/itplace1.png",
-      "/images/projects/itplace2.png",
-      "/images/projects/itplace3.png"
+      '/images/projects/itplace1.png',
+      '/images/projects/itplace2.png',
+      '/images/projects/itplace3.png',
     ],
-    githubUrl: "https://github.com/username/itplace",
-    technologies: ["React", "TypeScript", "Spring Boot", "MySQL", "WebRTC"]
+    githubUrl: 'https://github.com/yonggyu99/itplace-front',
+    technologies: ['React', 'TypeScript', 'Spring Boot', 'MySQL', 'WebRTC'],
   },
   {
-    category: "Personal Projects",
-    title: "Portfolio Website",
-    period: "2025.08.01~2025.08.15",
-    description: "개인 포트폴리오 웹사이트입니다. React와 TypeScript를 활용하여 반응형으로 제작했으며, 다양한 애니메이션과 인터랙션을 통해 사용자 경험을 향상시켰습니다. Skills, Projects, About 등의 섹션으로 구성되어 있으며, 다크모드와 라이트모드를 지원합니다.",
+    category: 'Team Projects',
+    title: 'UPlusPick',
+    period: '2025.06.09~2025.06.27',
+    description:
+      'U+Pick은 LG U+ 고객들을 위한 맞춤형 통신 요금제 추천 및 결합 매칭 플랫폼입니다. AI 챗봇을 통한 개인별 요금제 상담, 타인과의 결합 그룹 자동 매칭, 멤버십 혜택 지도 등을 제공하는 종합적인 통신 서비스 플랫폼입니다.',
     images: [
-      "/images/projects/portfolio1.png",
-      "/images/projects/portfolio2.png"
+      '/images/projects/portfolio1.png',
+      '/images/projects/portfolio2.png',
     ],
-    githubUrl: "https://github.com/username/portfolio",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"]
+    githubUrl: 'https://github.com/username/portfolio',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
   },
   {
-    category: "Team Projects",
-    title: "E-Commerce Platform",
-    period: "2025.06.01~2025.07.20",
-    description: "온라인 쇼핑몰 플랫폼입니다. 상품 관리, 주문 처리, 결제 시스템, 회원 관리 등의 핵심 기능을 구현했습니다. 관리자 페이지와 사용자 페이지를 분리하여 개발했으며, RESTful API 설계와 데이터베이스 최적화에 중점을 두었습니다.",
+    category: 'Team Projects',
+    title: 'GitPulse',
+    period: '2025.05.07~2025.05.20',
+    description:
+      'GitPulse는 GitHub 활동을 시각적으로 분석하고 개발자 성과를 추적할 수 있는 웹 플랫폼입니다. GitHub OAuth를 통한 인증, 실시간 커밋 분석, 개발 챌린지 시스템 등을 제공하는 종합적인 개발자 대시보드입니다.',
     images: [
-      "/images/projects/ecommerce1.png",
-      "/images/projects/ecommerce2.png",
-      "/images/projects/ecommerce3.png",
-      "/images/projects/ecommerce4.png"
+      '/images/projects/ecommerce1.png',
+      '/images/projects/ecommerce2.png',
+      '/images/projects/ecommerce3.png',
+      '/images/projects/ecommerce4.png',
     ],
-    githubUrl: "https://github.com/username/ecommerce",
-    technologies: ["Vue.js", "Node.js", "Express", "PostgreSQL", "Redis"]
-  }
+    githubUrl: 'https://github.com/username/ecommerce',
+    technologies: ['Vue.js', 'Node.js', 'Express', 'PostgreSQL', 'Redis'],
+  },
+  {
+    category: 'Team Projects',
+    title: 'ChillLog',
+    period: '2025.03.13~2025.03.21',
+    description:
+      'ChillLog는 개인 블로그 플랫폼으로, 사용자가 게시글을 작성하고 공유할 수 있는 Velog 클론 프로젝트입니다. 7조 Pat&Mat 팀이 개발한 풀스택 웹 애플리케이션입니다.',
+    images: [
+      '/images/projects/ecommerce1.png',
+      '/images/projects/ecommerce2.png',
+      '/images/projects/ecommerce3.png',
+      '/images/projects/ecommerce4.png',
+    ],
+    githubUrl: 'https://github.com/username/ecommerce',
+    technologies: ['Vue.js', 'Node.js', 'Express', 'PostgreSQL', 'Redis'],
+  },
 ];

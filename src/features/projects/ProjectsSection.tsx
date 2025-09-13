@@ -17,7 +17,7 @@ const ProjectsSection = () => {
       </div>
 
       {/* Projects List */}
-      <div className="space-y-32">
+      <div className="space-y-56">
         {projectsData.map((project, index) => (
           <ProjectCard
             key={index}

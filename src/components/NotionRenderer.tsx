@@ -108,7 +108,7 @@ const NotionRenderer = ({ pageId, className = '' }: NotionRendererProps) => {
         await new Promise(resolve => setTimeout(resolve, 2500));
 
         const response = await fetch(
-          `http://localhost:3001/api/notion/${pageId}`
+          `/api/notion/${pageId}`
         );
 
         if (!response.ok) {

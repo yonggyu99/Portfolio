@@ -9,8 +9,7 @@
     "lint": "eslint . --config eslint.config.js --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\"",
     "preview": "vite preview",
-    "server": "node --env-file=.env server/index.js",
-    "dev:full": "npm run server"
+    "dev:vercel": "vercel dev"
   },
   "dependencies": {
     "@notionhq/client": "^5.1.0",

@@ -8,18 +8,25 @@
     "build": "tsc -b && vite build",
     "lint": "eslint . --config eslint.config.js --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\"",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "node --env-file=.env server/index.js",
+    "dev:full": "npm run server"
   },
   "dependencies": {
+    "@notionhq/client": "^5.1.0",
+    "@types/react-modal": "^3.16.3",
     "autoprefixer": "^10.4.21",
     "axios": "^1.11.0",
     "clsx": "^2.1.1",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
     "lodash": "^4.17.21",
     "postcss": "^8.5.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.62.0",
     "react-icons": "^5.5.0",
+    "react-modal": "^3.16.3",
     "react-router-dom": "^7.8.2",
     "simple-icons": "^15.14.0",
     "tailwindcss": "^3.4.17"

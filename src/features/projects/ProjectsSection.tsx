@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import ProjectCard from './components/ProjectCard';
 import ProjectModal from './components/ProjectModal';
 import { projectsData, Project } from './data/projectsData';
@@ -16,29 +17,55 @@ const ProjectsSection = () => {
     setIsModalOpen(false);
     setSelectedProject(null);
   };
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8 }
+    }
+  };
+
   return (
-    <div
+    <motion.div
       id="projects"
       className="w-full max-w-6xl px-8 min-h-screen flex flex-col"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.3 }}
+      variants={sectionVariants}
     >
       {/* Section Title */}
-      <div className="mb-28 text-left pt-24">
+      <motion.div
+        className="mb-28 text-left pt-24"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: false }}
+      >
         <h2 className="text-primary text-4xl font-bold mb-4">
           <span className="text-secondary">03. </span>
           Projects
           <div className="inline-block ml-8 w-72 h-0.5 bg-line align-middle"></div>
         </h2>
-      </div>
+      </motion.div>
 
       {/* Projects List */}
       <div className="space-y-56">
         {projectsData.map((project, index) => (
-          <ProjectCard
+          <motion.div
             key={index}
-            project={project}
-            isReversed={index % 2 === 1}
-            onDetailClick={() => openModal(project)}
-          />
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.2, duration: 0.8 }}
+            viewport={{ once: false, amount: 0.3 }}
+          >
+            <ProjectCard
+              project={project}
+              isReversed={index % 2 === 1}
+              onDetailClick={() => openModal(project)}
+            />
+          </motion.div>
         ))}
       </div>
 
@@ -50,7 +77,7 @@ const ProjectsSection = () => {
           onClose={closeModal}
         />
       )}
-    </div>
+    </motion.div>
   );
 };
 

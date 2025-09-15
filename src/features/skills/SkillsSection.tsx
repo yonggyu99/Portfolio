@@ -47,7 +47,7 @@ const SkillsSection = () => {
       className="w-full max-w-6xl px-8 min-h-screen flex flex-col"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: false, amount: 0.3 }}
       variants={sectionVariants}
     >
       {/* Section Title */}
@@ -79,7 +79,7 @@ const SkillsSection = () => {
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
               >
                 {/* Highlight bar for selected item */}
                 {selectedCategory === category && (

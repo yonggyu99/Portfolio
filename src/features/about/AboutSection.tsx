@@ -16,7 +16,7 @@ const AboutSection = () => {
       className="w-full max-w-6xl px-8 min-h-screen flex flex-col justify-center"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: false, amount: 0.3 }}
       variants={sectionVariants}
     >
       {/* Section Title */}
@@ -91,7 +91,7 @@ const AboutSection = () => {
         className="mt-32 flex flex-wrap gap-12 justify-between w-full"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.8 }}
+        viewport={{ once: false, amount: 0.8 }}
         variants={{
           hidden: { opacity: 0 },
           visible: {

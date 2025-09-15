@@ -26,7 +26,8 @@ const HeroSection = () => {
       <motion.div
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
       >
         <motion.p
           variants={itemVariants}

@@ -5,6 +5,7 @@ export interface Project {
   description: string;
   images: string[];
   githubUrl: string;
+  notionPageId?: string;
   technologies: string[];
 }
 
@@ -21,6 +22,7 @@ export const projectsData: Project[] = [
       '/images/projects/itplace3.png',
     ],
     githubUrl: 'https://github.com/yonggyu99/itplace-front',
+    notionPageId: '26341649-166a-80ab-9138-c2c1839564a0',
     technologies: ['React', 'TypeScript', 'Spring Boot', 'MySQL', 'WebRTC'],
   },
   {
@@ -33,7 +35,8 @@ export const projectsData: Project[] = [
       '/images/projects/portfolio1.png',
       '/images/projects/portfolio2.png',
     ],
-    githubUrl: 'https://github.com/username/portfolio',
+    githubUrl: 'https://github.com/yonggyu99/Pick_Front',
+    notionPageId: '26241649-166a-8071-a020-e248a9e85d57',
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
   },
   {
@@ -48,7 +51,8 @@ export const projectsData: Project[] = [
       '/images/projects/ecommerce3.png',
       '/images/projects/ecommerce4.png',
     ],
-    githubUrl: 'https://github.com/username/ecommerce',
+    githubUrl: 'https://github.com/yonggyu99/Gitpulse_distribute',
+    notionPageId: '26241649-166a-8013-8453-d87c3e20bc4f',
     technologies: ['Vue.js', 'Node.js', 'Express', 'PostgreSQL', 'Redis'],
   },
   {
@@ -63,7 +67,8 @@ export const projectsData: Project[] = [
       '/images/projects/ecommerce3.png',
       '/images/projects/ecommerce4.png',
     ],
-    githubUrl: 'https://github.com/username/ecommerce',
+    githubUrl: 'https://github.com/yonggyu99/UrecaMiniProject_Front',
+    notionPageId: '26041649-166a-8067-95aa-c5e75272eb4f',
     technologies: ['Vue.js', 'Node.js', 'Express', 'PostgreSQL', 'Redis'],
   },
 ];

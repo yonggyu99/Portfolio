@@ -1,4 +1,6 @@
 // 컴포넌트 export 파일
-// 추후 컴포넌트들을 여기서 export
-
-export {};
+export { default as Logo } from './Logo';
+export { default as Header } from './Header';
+export { default as Footer } from './Footer';
+export { default as NotionRenderer } from './NotionRenderer';
+export { default as LoadingSpinner } from './LoadingSpinner';

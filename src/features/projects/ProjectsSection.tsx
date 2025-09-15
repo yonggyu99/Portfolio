@@ -1,7 +1,21 @@
+import { useState } from 'react';
 import ProjectCard from './components/ProjectCard';
-import { projectsData } from './data/projectsData';
+import ProjectModal from './components/ProjectModal';
+import { projectsData, Project } from './data/projectsData';
 
 const ProjectsSection = () => {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (project: Project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+  };
   return (
     <div
       id="projects"
@@ -23,9 +37,19 @@ const ProjectsSection = () => {
             key={index}
             project={project}
             isReversed={index % 2 === 1}
+            onDetailClick={() => openModal(project)}
           />
         ))}
       </div>
+
+      {/* Project Modal */}
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          isOpen={isModalOpen}
+          onClose={closeModal}
+        />
+      )}
     </div>
   );
 };

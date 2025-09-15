@@ -4,9 +4,10 @@ import { Project } from '../data/projectsData';
 interface ProjectCardProps {
   project: Project;
   isReversed?: boolean;
+  onDetailClick?: () => void;
 }
 
-const ProjectCard = ({ project, isReversed = false }: ProjectCardProps) => {
+const ProjectCard = ({ project, isReversed = false, onDetailClick }: ProjectCardProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const nextImage = () => {
@@ -67,10 +68,7 @@ const ProjectCard = ({ project, isReversed = false }: ProjectCardProps) => {
         {/* 자세히 보기 버튼 */}
         <button
           className="px-4 py-2 border border-secondary text-secondary hover:bg-secondary hover:text-primary transition-all duration-300 text-base rounded"
-          onClick={() => {
-            // 모달 오픈 로직 (나중에 구현)
-            console.log('자세히 보기 클릭:', project.title);
-          }}
+          onClick={onDetailClick}
         >
           자세히 보기
         </button>

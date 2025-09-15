@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import type { ReactElement } from 'react';
+import LoadingSpinner from './LoadingSpinner';
 
 interface RichText {
   type: string;
@@ -102,6 +103,10 @@ const NotionRenderer = ({ pageId, className = '' }: NotionRendererProps) => {
     const fetchNotionData = async () => {
       try {
         setLoading(true);
+
+        // 강제 로딩 지연 (2-3초)
+        await new Promise(resolve => setTimeout(resolve, 2500));
+
         const response = await fetch(
           `http://localhost:3001/api/notion/${pageId}`
         );
@@ -231,8 +236,11 @@ const NotionRenderer = ({ pageId, className = '' }: NotionRendererProps) => {
 
   if (loading) {
     return (
-      <div className={`flex items-center justify-center h-64 ${className}`}>
-        <div className="text-gray-500">Notion 페이지를 불러오는 중...</div>
+      <div className={`flex items-center justify-center h-full ${className}`}>
+        <LoadingSpinner
+          size="lg"
+          message="Notion 페이지를 불러오는 중..."
+        />
       </div>
     );
   }

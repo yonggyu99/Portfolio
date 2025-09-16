@@ -4,6 +4,7 @@ import { hashtags } from './data/aboutData';
 
 const AboutSection = () => {
   const [flippedCard, setFlippedCard] = useState<string | null>(null);
+  const [clickingHashtag, setClickingHashtag] = useState<number | null>(null);
 
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -16,6 +17,17 @@ const AboutSection = () => {
 
   const handleHashtagClick = (hashtagId: string) => {
     setFlippedCard(flippedCard === hashtagId ? null : hashtagId);
+  };
+
+  // 뷰포트 진입 시 한 번만 랜덤 선택
+  const handleHashtagsInView = () => {
+    if (clickingHashtag === null) {
+      const randomIndex =
+        Math.random() < 0.8
+          ? Math.floor(Math.random() * hashtags.length)
+          : null;
+      setClickingHashtag(randomIndex);
+    }
   };
 
   return (
@@ -168,7 +180,8 @@ const AboutSection = () => {
         className="mt-32 flex flex-wrap gap-12 justify-between w-full"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.8 }}
+        viewport={{ once: true, amount: 0.8 }}
+        onViewportEnter={handleHashtagsInView}
         variants={{
           hidden: { opacity: 0 },
           visible: {
@@ -180,12 +193,10 @@ const AboutSection = () => {
           },
         }}
       >
-        {hashtags.map((hashtag) => (
-          <motion.span
+        {hashtags.map((hashtag, index) => (
+          <motion.div
             key={hashtag.id}
-            className={`text-3xl cursor-pointer transition-colors duration-200 ${
-              flippedCard === hashtag.id ? 'text-primary' : 'text-secondary'
-            }`}
+            className="relative cursor-pointer"
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0 },
@@ -194,8 +205,31 @@ const AboutSection = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {hashtag.text}
-          </motion.span>
+            <motion.span
+              className={`text-3xl transition-colors duration-200 ${
+                flippedCard === hashtag.id ? 'text-primary' : 'text-secondary'
+              }`}
+            >
+              {hashtag.text}
+            </motion.span>
+
+            {/* 랜덤하게 나타나는 Click me! 텍스트 */}
+            {clickingHashtag === index && (
+              <motion.span
+                className="absolute -top-8 inset-x-0 flex justify-center text-xs text-primary font-bold whitespace-nowrap"
+                animate={{
+                  y: [0, -8, 0],
+                }}
+                transition={{
+                  duration: 0.6,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+              >
+                Click&nbsp;me!
+              </motion.span>
+            )}
+          </motion.div>
         ))}
       </motion.div>
     </motion.div>

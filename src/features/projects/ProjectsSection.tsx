@@ -29,7 +29,7 @@ const ProjectsSection = () => {
   return (
     <motion.div
       id="projects"
-      className="w-full max-w-6xl px-8 min-h-screen flex flex-col"
+      className="w-full max-w-6xl px-4 md:px-8 min-h-screen flex flex-col"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.3 }}
@@ -37,21 +37,21 @@ const ProjectsSection = () => {
     >
       {/* Section Title */}
       <motion.div
-        className="mb-28 text-left pt-24"
+        className="mb-16 md:mb-28 text-left pt-16 md:pt-24"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: false }}
       >
-        <h2 className="text-primary text-4xl font-bold mb-4">
+        <h2 className="text-primary text-2xl md:text-4xl font-bold mb-4">
           <span className="text-secondary">03. </span>
           Projects
-          <div className="inline-block ml-8 w-72 h-0.5 bg-line align-middle"></div>
+          <div className="inline-block ml-4 md:ml-8 w-32 md:w-72 h-0.5 bg-line align-middle"></div>
         </h2>
       </motion.div>
 
       {/* Projects List */}
-      <div className="space-y-56">
+      <div className="space-y-24 md:space-y-32 lg:space-y-56">
         {projectsData.map((project, index) => (
           <motion.div
             key={index}

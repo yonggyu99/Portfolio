@@ -73,10 +73,9 @@ export const projectsData: Project[] = [
     description:
       'ChillLog는 개인 블로그 플랫폼으로, 사용자가 게시글을 작성하고 공유할 수 있는 Velog 클론 프로젝트입니다. 7조 Pat&Mat 팀이 개발한 풀스택 웹 애플리케이션입니다.',
     images: [
-      '/images/projects/ecommerce1.png',
-      '/images/projects/ecommerce2.png',
-      '/images/projects/ecommerce3.png',
-      '/images/projects/ecommerce4.png',
+      '/projectpng/Chillog1.png',
+      '/projectpng/Chillog2.png',
+      '/projectpng/Chillog3.png',
     ],
     githubUrl: 'https://github.com/yonggyu99/UrecaMiniProject_Front',
     notionPageId: '26041649-166a-8067-95aa-c5e75272eb4f',

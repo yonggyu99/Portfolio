@@ -104,9 +104,13 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
   const createCircleDisintegration = () => {
     if (!particlesRef.current) return;
 
+    // 화면 크기에 따른 반응형 설정
+    const isMobile = window.innerWidth < 768;
+    const isTablet = window.innerWidth < 1024;
+
     // 원의 둘레를 따라 선 세그먼트 생성
-    const numSegments = 100; // 큰 원에 맞춰 더 많은 세그먼트
-    const radius = 500;
+    const numSegments = isMobile ? 60 : isTablet ? 80 : 100; // 화면 크기에 따라 세그먼트 수 조정
+    const radius = isMobile ? 150 : isTablet ? 300 : 500; // 화면 크기에 따라 반지름 조정
 
     for (let i = 0; i < numSegments; i++) {
       const segment = document.createElement('div');
@@ -116,8 +120,8 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
 
       segment.className = 'absolute';
       segment.style.backgroundColor = '#A7C7E7'; // 파스텔 블루
-      segment.style.width = '4px';
-      segment.style.height = '10px';
+      segment.style.width = isMobile ? '2px' : '4px';
+      segment.style.height = isMobile ? '6px' : '10px';
       segment.style.left = '50%';
       segment.style.top = '50%';
       segment.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px) rotate(${angle + Math.PI/2}rad)`;
@@ -129,7 +133,8 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
 
       // 반시계 방향으로 흩어지면서 점점 사라지기
       const spreadAngle = angle - Math.PI * 0.2; // 반시계 방향으로 변경
-      const spreadDistance = 400 + Math.random() * 500;
+      const baseSpreadDistance = isMobile ? 200 : isTablet ? 300 : 400;
+      const spreadDistance = baseSpreadDistance + Math.random() * (isMobile ? 200 : isTablet ? 300 : 500);
       const spreadX = Math.cos(spreadAngle) * spreadDistance;
       const spreadY = Math.sin(spreadAngle) * spreadDistance;
 
@@ -200,9 +205,10 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
       <div className="relative z-10 text-center">
         {/* SVG 원 */}
         <svg
-          width="1050"
-          height="1050"
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          width="350"
+          height="350"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:w-[600px] md:h-[600px] lg:w-[1050px] lg:h-[1050px]"
+          viewBox="0 0 1050 1050"
         >
           <circle
             ref={circleRef}
@@ -229,10 +235,10 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
           transition={{ delay: 0.5, duration: 1 }}
           className="relative z-20"
         >
-          <h1 className="text-6xl md:text-7xl font-bold text-primary mb-4 tracking-wide">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary mb-4 tracking-wide">
             Thank you
           </h1>
-          <p className="text-2xl md:text-3xl text-primary/80 font-light tracking-wider">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-primary/80 font-light tracking-wider">
             for visiting my portfolio
           </p>
         </motion.div>
@@ -242,7 +248,7 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 0.5 }}
-          className="absolute bottom-16 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-8 md:bottom-16 left-1/2 transform -translate-x-1/2"
         >
           <div className="flex space-x-2">
             {[0, 1, 2].map((i) => (

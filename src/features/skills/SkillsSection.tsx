@@ -44,25 +44,51 @@ const SkillsSection = () => {
   return (
     <motion.div
       id="skills"
-      className="w-full max-w-6xl px-8 min-h-screen flex flex-col"
+      className="w-full max-w-6xl px-4 md:px-8 min-h-screen flex flex-col"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.3 }}
       variants={sectionVariants}
     >
       {/* Section Title */}
-      <motion.div className="mb-28 text-left pt-24" variants={itemVariants}>
-        <h2 className="text-primary text-4xl font-bold mb-4">
+      <motion.div className="mb-16 md:mb-28 text-left pt-16 md:pt-24" variants={itemVariants}>
+        <h2 className="text-primary text-2xl md:text-4xl font-bold mb-4">
           <span className="text-secondary">02. </span>
           Skills
-          <div className="inline-block ml-8 w-72 h-0.5 bg-line align-middle"></div>
+          <div className="inline-block ml-4 md:ml-8 w-32 md:w-72 h-0.5 bg-line align-middle"></div>
         </h2>
       </motion.div>
 
-      <motion.div className="flex gap-24" variants={containerVariants}>
-        {/* Left Category Tabs */}
-        <motion.div className="flex" variants={itemVariants}>
-          <div className="relative flex flex-col space-y-6 min-w-[200px]">
+      <motion.div className="flex flex-col lg:flex-row gap-8 lg:gap-24" variants={containerVariants}>
+        {/* Category Tabs - Mobile: Horizontal, Desktop: Vertical */}
+        <motion.div className="flex lg:block" variants={itemVariants}>
+          {/* Mobile Horizontal Layout */}
+          <div className="lg:hidden w-full mb-8">
+            <div className="flex flex-wrap gap-2 justify-center">
+              {categories.map((category, index) => (
+                <motion.button
+                  key={category}
+                  onClick={() => handleCategoryClick(category)}
+                  className={`px-4 py-2 rounded-lg text-sm md:text-base transition-all duration-300 ${
+                    selectedCategory === category
+                      ? 'bg-secondary text-primary'
+                      : 'bg-slate-800 text-line hover:text-secondary hover:bg-slate-700'
+                  }`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.6 }}
+                  viewport={{ once: false }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {category}
+                </motion.button>
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop Vertical Layout */}
+          <div className="hidden lg:block relative flex flex-col space-y-6 min-w-[200px]">
             {/* Background line - only spans the height of the buttons */}
             <div
               className="absolute left-0 w-0.5 bg-line"
@@ -105,9 +131,9 @@ const SkillsSection = () => {
           </div>
         </motion.div>
 
-        {/* Right Skills Grid */}
+        {/* Skills Grid */}
         <motion.div
-          className="flex-1 space-y-12 min-h-[600px]"
+          className="flex-1 space-y-6 md:space-y-8 lg:space-y-12 min-h-[400px] md:min-h-[600px]"
           variants={itemVariants}
         >
           {skillsData[selectedCategory]?.map((skill, index) => (

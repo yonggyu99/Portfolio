@@ -52,15 +52,12 @@ const AboutSection = () => {
         {/* Profile Image */}
         <div className="flex-shrink-0 order-1 lg:order-none">
           <div
-            className="relative w-[280px] h-[280px] md:w-[400px] md:h-[400px] lg:w-[520px] lg:h-[520px] flex items-center justify-center"
+            className="relative w-[260px] h-[260px] md:w-[380px] md:h-[380px] lg:w-[480px] lg:h-[480px] flex items-center justify-center"
             style={{ perspective: '1000px' }}
           >
-            {/* 오른쪽 아래로 살짝 이동된 민트색 원 */}
-            <div className="absolute w-[280px] h-[280px] md:w-[400px] md:h-[400px] lg:w-[520px] lg:h-[520px] border-2 md:border-4 border-secondary rounded-full translate-x-1 translate-y-1 md:translate-x-2 md:translate-y-2"></div>
-
             {/* 카드 컨테이너 - 뒤집기 애니메이션 */}
             <motion.div
-              className="absolute w-[280px] h-[280px] md:w-[400px] md:h-[400px] lg:w-[520px] lg:h-[520px] z-10 -translate-x-1 -translate-y-1 md:-translate-x-2 md:-translate-y-2"
+              className="w-[260px] h-[260px] md:w-[380px] md:h-[380px] lg:w-[480px] lg:h-[480px] z-10"
               animate={{ rotateY: flippedCard ? 180 : 0 }}
               transition={{ duration: 0.8 }}
               style={{ transformStyle: 'preserve-3d' }}
@@ -81,12 +78,13 @@ const AboutSection = () => {
                   src="/profile.jpg"
                   alt="Profile"
                   className="w-full h-full object-cover"
+                  style={{ objectPosition: 'center 20%' }}
                 />
               </motion.div>
 
               {/* 뒷면 - 설명 텍스트 */}
               <motion.div
-                className="absolute w-full h-full rounded-full bg-slate-800 flex items-center justify-center p-4 md:p-6 lg:p-8"
+                className="absolute w-full h-full rounded-full bg-slate-800 flex items-center justify-center p-6 md:p-8 lg:p-10"
                 style={{
                   backfaceVisibility: 'hidden',
                   WebkitBackfaceVisibility: 'hidden',

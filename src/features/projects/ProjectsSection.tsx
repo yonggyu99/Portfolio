@@ -29,10 +29,10 @@ const ProjectsSection = () => {
   return (
     <motion.div
       id="projects"
-      className="w-full max-w-6xl px-4 md:px-8 min-h-screen flex flex-col relative z-10"
+      className="w-full max-w-6xl px-4 md:px-8 py-16 md:py-24 relative z-10"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, amount: 0.3 }}
+      viewport={{ once: false, amount: 0.1 }}
       variants={sectionVariants}
     >
       {/* Section Title */}
@@ -58,7 +58,7 @@ const ProjectsSection = () => {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.2, duration: 0.8 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: false, amount: 0.1 }}
           >
             <ProjectCard
               project={project}

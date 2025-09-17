@@ -1,10 +1,22 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { hashtags } from './data/aboutData';
 
 const AboutSection = () => {
   const [flippedCard, setFlippedCard] = useState<string | null>(null);
   const [clickingHashtag, setClickingHashtag] = useState<number | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -16,7 +28,11 @@ const AboutSection = () => {
   };
 
   const handleHashtagClick = (hashtagId: string) => {
-    setFlippedCard(flippedCard === hashtagId ? null : hashtagId);
+    if (isMobile) {
+      setIsModalOpen(hashtagId);
+    } else {
+      setFlippedCard(flippedCard === hashtagId ? null : hashtagId);
+    }
   };
 
   // 뷰포트 진입 시 한 번만 랜덤 선택
@@ -58,7 +74,7 @@ const AboutSection = () => {
             {/* 카드 컨테이너 - 뒤집기 애니메이션 */}
             <motion.div
               className="w-[260px] h-[260px] md:w-[380px] md:h-[380px] lg:w-[480px] lg:h-[480px] z-10"
-              animate={{ rotateY: flippedCard ? 180 : 0 }}
+              animate={{ rotateY: !isMobile && flippedCard ? 180 : 0 }}
               transition={{ duration: 0.8 }}
               style={{ transformStyle: 'preserve-3d' }}
             >
@@ -240,6 +256,40 @@ const AboutSection = () => {
           </motion.div>
         ))}
       </motion.div>
+
+      {/* 모바일 모달 */}
+      {isMobile && isModalOpen && (
+        <motion.div
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setIsModalOpen(null)}
+        >
+          <motion.div
+            className="bg-slate-800 rounded-2xl p-6 max-w-sm w-full max-h-[80vh] overflow-y-auto"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-secondary text-xl font-bold">
+                {hashtags.find((h) => h.id === isModalOpen)?.text}
+              </h3>
+              <button
+                onClick={() => setIsModalOpen(null)}
+                className="w-8 h-8 rounded-full bg-secondary text-primary font-bold hover:bg-white transition-colors duration-200"
+              >
+                ×
+              </button>
+            </div>
+            <p className="text-primary text-sm leading-relaxed">
+              {hashtags.find((h) => h.id === isModalOpen)?.description}
+            </p>
+          </motion.div>
+        </motion.div>
+      )}
     </motion.div>
   );
 };

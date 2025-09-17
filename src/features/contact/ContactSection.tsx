@@ -67,7 +67,7 @@ const ContactSection = () => {
           >
             <MdPhone className="text-primary text-xl md:text-2xl" />
             <span className="text-white text-lg md:text-xl lg:text-2xl">
-              010-1234-5678
+              010-8939-2456
             </span>
           </motion.div>
 

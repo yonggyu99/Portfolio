@@ -29,7 +29,7 @@ const ProjectsSection = () => {
   return (
     <motion.div
       id="projects"
-      className="w-full max-w-6xl px-4 md:px-8 min-h-screen flex flex-col"
+      className="w-full max-w-6xl px-4 md:px-8 min-h-screen flex flex-col relative z-10"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.3 }}

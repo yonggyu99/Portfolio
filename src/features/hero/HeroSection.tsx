@@ -31,21 +31,21 @@ const HeroSection = () => {
       >
         <motion.p
           variants={itemVariants}
-          className="text-primary mb-3 md:mb-4 lg:mb-5 text-lg md:text-xl leading-[3] tracking-wider"
+          className="text-primary mb-2 md:mb-4 lg:mb-5 text-sm md:text-lg lg:text-xl leading-normal tracking-wider"
         >
           안녕하세요, 저는 Frontend Developer
         </motion.p>
 
         <motion.h1
           variants={itemVariants}
-          className="text-white font-bold mb-4 md:mb-5 lg:mb-7 text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[3] tracking-wider"
+          className="text-white font-bold mb-3 md:mb-5 lg:mb-7 text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl leading-normal tracking-wider"
         >
           박용규 입니다.
         </motion.h1>
 
         <motion.p
           variants={itemVariants}
-          className="text-primary mb-5 md:mb-7 lg:mb-9 text-xl leading-normal sm:text-2xl sm:leading-normal md:text-3xl md:leading-normal lg:text-4xl lg:leading-normal xl:text-5xl xl:leading-normal tracking-wider"
+          className="text-primary mb-4 md:mb-7 lg:mb-9 text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl leading-normal tracking-wider"
         >
           사람들이 편하게 다가갈 수 있는 웹을 만드는
           <br className="hidden sm:block" />

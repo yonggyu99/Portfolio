@@ -4,7 +4,7 @@ import WelcomeScreen from './components/WelcomeScreen';
 import './App.css';
 
 function App() {
-  const [showWelcome, setShowWelcome] = useState(true);
+  const [showWelcome, setShowWelcome] = useState(false);
 
   const handleWelcomeComplete = () => {
     setShowWelcome(false);

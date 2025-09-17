@@ -141,19 +141,25 @@ const AboutSection = () => {
           <div className="flex">
             <div className="w-0.5 bg-line mr-4 md:mr-8 flex-shrink-0 self-stretch"></div>
             <div className="flex-1">
-              <h3 className="text-secondary text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-6">학력</h3>
+              <h3 className="text-secondary text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-6">
+                학력
+              </h3>
               <div className="space-y-3 md:space-y-4">
                 <div>
                   <h4 className="text-primary text-lg md:text-xl lg:text-2xl font-semibold">
                     부경대학교 전자공학과
                   </h4>
-                  <p className="text-line text-base md:text-lg lg:text-xl">2018.03~2025.02</p>
+                  <p className="text-line text-base md:text-lg lg:text-xl">
+                    2018.03~2025.02
+                  </p>
                 </div>
                 <div>
                   <h4 className="text-primary text-lg md:text-xl lg:text-2xl font-semibold">
                     LG U+ 유레카 프론트엔드 과정
                   </h4>
-                  <p className="text-line text-base md:text-lg lg:text-xl">2018.03~2025.02</p>
+                  <p className="text-line text-base md:text-lg lg:text-xl">
+                    2018.03~2025.02
+                  </p>
                 </div>
               </div>
             </div>
@@ -163,12 +169,16 @@ const AboutSection = () => {
           <div className="flex">
             <div className="w-0.5 bg-line mr-4 md:mr-8 flex-shrink-0 self-stretch"></div>
             <div className="flex-1">
-              <h3 className="text-secondary text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-6">수상</h3>
+              <h3 className="text-secondary text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-6">
+                수상
+              </h3>
               <div>
                 <h4 className="text-primary text-lg md:text-xl lg:text-2xl font-semibold">
                   LG U+ 유레카 최종 융합프로젝트
                 </h4>
-                <p className="text-line text-base md:text-lg lg:text-xl">우수상(IT-PLACE)</p>
+                <p className="text-line text-base md:text-lg lg:text-xl">
+                  우수상(IT-PLACE)
+                </p>
               </div>
             </div>
           </div>

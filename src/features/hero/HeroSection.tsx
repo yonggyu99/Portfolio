@@ -48,7 +48,8 @@ const HeroSection = () => {
               편하게
             </span>{' '}
             다가갈 수 있는
-            <br />서비스를 제공하기 위해 노력하고 있습니다.
+            <br />
+            서비스를 제공하기 위해 노력하고 있습니다.
           </div>
         </motion.div>
 
@@ -64,7 +65,7 @@ const HeroSection = () => {
           <span className="text-secondary font-bold text-2xl md:text-3xl">
             배움
           </span>
-          을 통해 {' '}
+          을 통해{' '}
           <span className="text-secondary font-bold text-2xl md:text-3xl">
             한 단계씩
           </span>{' '}

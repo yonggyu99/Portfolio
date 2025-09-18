@@ -105,11 +105,9 @@ const NotionRenderer = ({ pageId, className = '' }: NotionRendererProps) => {
         setLoading(true);
 
         // 강제 로딩 지연 (2-3초)
-        await new Promise(resolve => setTimeout(resolve, 2500));
+        await new Promise((resolve) => setTimeout(resolve, 2500));
 
-        const response = await fetch(
-          `/api/notion/${pageId}`
-        );
+        const response = await fetch(`/api/notion/${pageId}`);
 
         if (!response.ok) {
           throw new Error('Failed to fetch Notion data');
@@ -237,10 +235,7 @@ const NotionRenderer = ({ pageId, className = '' }: NotionRendererProps) => {
   if (loading) {
     return (
       <div className={`flex items-center justify-center h-full ${className}`}>
-        <LoadingSpinner
-          size="lg"
-          message="Notion 페이지를 불러오는 중..."
-        />
+        <LoadingSpinner size="lg" message="Notion 페이지를 불러오는 중..." />
       </div>
     );
   }

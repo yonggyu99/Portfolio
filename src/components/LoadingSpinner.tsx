@@ -17,7 +17,9 @@ const LoadingSpinner = ({ size = 'md', message }: LoadingSpinnerProps) => {
   };
 
   return (
-    <div className={`flex flex-col items-center justify-center ${containerClasses[size]}`}>
+    <div
+      className={`flex flex-col items-center justify-center ${containerClasses[size]}`}
+    >
       <div
         className={`${sizeClasses[size]} border-4 border-gray-300 border-t-secondary rounded-full animate-spin`}
       />

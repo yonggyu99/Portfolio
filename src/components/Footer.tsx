@@ -25,7 +25,7 @@ const Footer = () => {
       {/* 왼쪽: GitHub + 세로라인 */}
       <motion.div
         animate={{ opacity: isContactVisible ? 0 : 1 }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
+        transition={{ duration: 0.5, ease: 'easeInOut' }}
         className="absolute bottom-0 left-8 flex flex-col items-center"
       >
         <a
@@ -42,7 +42,7 @@ const Footer = () => {
       {/* 오른쪽: 이메일 + 세로라인 */}
       <motion.div
         animate={{ opacity: isContactVisible ? 0 : 1 }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
+        transition={{ duration: 0.5, ease: 'easeInOut' }}
         className="absolute bottom-0 right-8 flex flex-col items-center"
       >
         <div className="writing-mode-vertical text-white text-xl tracking-wider mb-6">

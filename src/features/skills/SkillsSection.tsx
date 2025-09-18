@@ -51,7 +51,10 @@ const SkillsSection = () => {
       variants={sectionVariants}
     >
       {/* Section Title */}
-      <motion.div className="mb-16 md:mb-28 text-left pt-16 md:pt-24" variants={itemVariants}>
+      <motion.div
+        className="mb-16 md:mb-28 text-left pt-16 md:pt-24"
+        variants={itemVariants}
+      >
         <h2 className="text-primary text-2xl md:text-4xl font-bold mb-4">
           <span className="text-secondary">02. </span>
           Skills
@@ -61,7 +64,10 @@ const SkillsSection = () => {
         <div className="block md:hidden w-full h-0.5 bg-line mt-2"></div>
       </motion.div>
 
-      <motion.div className="flex flex-col lg:flex-row gap-8 lg:gap-24" variants={containerVariants}>
+      <motion.div
+        className="flex flex-col lg:flex-row gap-8 lg:gap-24"
+        variants={containerVariants}
+      >
         {/* Category Tabs - Mobile: Horizontal, Desktop: Vertical */}
         <motion.div className="flex lg:block" variants={itemVariants}>
           {/* Mobile Horizontal Layout */}

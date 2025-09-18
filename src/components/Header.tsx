@@ -31,16 +31,16 @@ const Header = () => {
       if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
         // 스크롤 다운 - 헤더 완전히 숨기기
         gsap.to([headerRef.current, mobileMenuRef.current], {
-          y: "-100%",
+          y: '-100%',
           duration: 0.6,
-          ease: "power2.inOut"
+          ease: 'power2.inOut',
         });
       } else if (currentScrollY < lastScrollY.current) {
         // 스크롤 업 - 헤더 보이기
         gsap.to([headerRef.current, mobileMenuRef.current], {
           y: 0,
           duration: 0.5,
-          ease: "power2.out"
+          ease: 'power2.out',
         });
       }
 
@@ -53,7 +53,10 @@ const Header = () => {
 
   return (
     <>
-      <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-3 md:py-6 backdrop-blur-sm">
+      <header
+        ref={headerRef}
+        className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-3 md:py-6 backdrop-blur-sm"
+      >
         <nav className="flex justify-between items-center">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -83,7 +86,6 @@ const Header = () => {
           >
             {isMenuOpen ? <HiX /> : <HiMenu />}
           </button>
-
         </nav>
       </header>
 
@@ -91,10 +93,12 @@ const Header = () => {
       <div
         ref={mobileMenuRef}
         className={`fixed left-0 right-0 md:hidden backdrop-blur-sm px-4 md:px-8 transition-all duration-300 ease-out ${
-          isMenuOpen ? 'z-[60] opacity-100' : 'z-[-1] opacity-0 pointer-events-none'
+          isMenuOpen
+            ? 'z-[60] opacity-100'
+            : 'z-[-1] opacity-0 pointer-events-none'
         }`}
         style={{
-          top: '72px'
+          top: '72px',
         }}
       >
         <ul className="flex flex-col space-y-6 py-6">

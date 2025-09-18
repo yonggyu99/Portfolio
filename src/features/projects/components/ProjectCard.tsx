@@ -8,7 +8,11 @@ interface ProjectCardProps {
   onDetailClick?: () => void;
 }
 
-const ProjectCard = ({ project, isReversed = false, onDetailClick }: ProjectCardProps) => {
+const ProjectCard = ({
+  project,
+  isReversed = false,
+  onDetailClick,
+}: ProjectCardProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const nextImage = () => {
@@ -29,7 +33,9 @@ const ProjectCard = ({ project, isReversed = false, onDetailClick }: ProjectCard
         {/* 상단 정보들 - 왼쪽 정렬 */}
         <div className="text-left mb-4 md:mb-6">
           {/* 카테고리 */}
-          <p className="text-secondary text-base md:text-lg mb-2">{project.category}</p>
+          <p className="text-secondary text-base md:text-lg mb-2">
+            {project.category}
+          </p>
 
           {/* 프로젝트 제목 */}
           <h3 className="text-primary text-2xl md:text-3xl font-bold mb-2">
@@ -37,7 +43,9 @@ const ProjectCard = ({ project, isReversed = false, onDetailClick }: ProjectCard
           </h3>
 
           {/* 기간 */}
-          <p className="text-line text-sm md:text-base mb-4">{project.period}</p>
+          <p className="text-line text-sm md:text-base mb-4">
+            {project.period}
+          </p>
         </div>
 
         {/* 설명 박스 - 독립적인 박스 */}

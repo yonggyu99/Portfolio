@@ -1,8 +1,32 @@
 import { motion, Variants } from 'framer-motion';
 import { FaGithub, FaBlog } from 'react-icons/fa';
 import { MdEmail, MdPhone } from 'react-icons/md';
+import { useState, useEffect } from 'react';
 
 const ContactSection = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const section = document.getElementById('contact');
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // ContactSection이 화면에 거의 완전히 보일 때만 true
+      const isFullyVisible =
+        rect.top <= windowHeight * 0.05 && rect.bottom >= windowHeight * 0.95;
+      setIsVisible(isFullyVisible);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // 초기 체크
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -36,17 +60,22 @@ const ContactSection = () => {
     <section
       id="contact"
       data-section="contact"
-      className="min-h-screen flex items-center justify-center px-4 md:px-8 relative"
+      className="min-h-screen w-full flex items-center justify-center px-4 md:px-8 relative"
     >
       {/* 배경 파티클 */}
-      <div className="fixed inset-0 pointer-events-none">
+      <motion.div
+        className="fixed inset-0 pointer-events-none z-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isVisible ? 1 : 0 }}
+        transition={{ duration: 1, ease: 'easeInOut' }}
+      >
         {Array.from({ length: 80 }).map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-primary rounded-full"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}vw`,
+              top: `${Math.random() * 100}vh`,
             }}
             animate={{
               opacity: [0, 1, 0],
@@ -59,7 +88,7 @@ const ContactSection = () => {
             }}
           />
         ))}
-      </div>
+      </motion.div>
 
       <motion.div
         variants={containerVariants}

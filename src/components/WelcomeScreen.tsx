@@ -24,77 +24,105 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
         strokeDasharray: circumference,
         strokeDashoffset: circumference,
         rotation: -90, // 12시 방향에서 시작
-        transformOrigin: "center",
+        transformOrigin: 'center',
         scaleX: -1, // X축 뒤집어서 시계방향으로 그리기
       });
 
       timeline.to(circle, {
         strokeDashoffset: 0,
         duration: 2,
-        ease: "power2.out",
+        ease: 'power2.out',
       });
     }
 
     // 2. 원의 색상 변화를 선 그리기와 동일한 방향으로
     // 그라디언트를 사용해서 색상이 선을 따라 변하는 효과
-    timeline.call(() => {
-      if (circleRef.current) {
-        // SVG 그라디언트 생성
-        const svg = circleRef.current.closest('svg');
-        if (svg) {
-          const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-          const gradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
-          gradient.id = 'strokeGradient';
-          gradient.setAttribute('gradientUnits', 'userSpaceOnUse');
-          gradient.setAttribute('x1', '525'); // 중심점
-          gradient.setAttribute('y1', '25');  // 12시 방향
-          gradient.setAttribute('x2', '525');
-          gradient.setAttribute('y2', '1025'); // 6시 방향
+    timeline.call(
+      () => {
+        if (circleRef.current) {
+          // SVG 그라디언트 생성
+          const svg = circleRef.current.closest('svg');
+          if (svg) {
+            const defs = document.createElementNS(
+              'http://www.w3.org/2000/svg',
+              'defs'
+            );
+            const gradient = document.createElementNS(
+              'http://www.w3.org/2000/svg',
+              'linearGradient'
+            );
+            gradient.id = 'strokeGradient';
+            gradient.setAttribute('gradientUnits', 'userSpaceOnUse');
+            gradient.setAttribute('x1', '525'); // 중심점
+            gradient.setAttribute('y1', '25'); // 12시 방향
+            gradient.setAttribute('x2', '525');
+            gradient.setAttribute('y2', '1025'); // 6시 방향
 
-          const stop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
-          stop1.setAttribute('offset', '0%');
-          stop1.setAttribute('stop-color', '#A7C7E7'); // 파스텔 블루
+            const stop1 = document.createElementNS(
+              'http://www.w3.org/2000/svg',
+              'stop'
+            );
+            stop1.setAttribute('offset', '0%');
+            stop1.setAttribute('stop-color', '#A7C7E7'); // 파스텔 블루
 
-          const stop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
-          stop2.setAttribute('offset', '100%');
-          stop2.setAttribute('stop-color', '#e6f7ff');
+            const stop2 = document.createElementNS(
+              'http://www.w3.org/2000/svg',
+              'stop'
+            );
+            stop2.setAttribute('offset', '100%');
+            stop2.setAttribute('stop-color', '#e6f7ff');
 
-          gradient.appendChild(stop1);
-          gradient.appendChild(stop2);
-          defs.appendChild(gradient);
-          svg.appendChild(defs);
+            gradient.appendChild(stop1);
+            gradient.appendChild(stop2);
+            defs.appendChild(gradient);
+            svg.appendChild(defs);
 
-          // 그라디언트 회전으로 색상 변화 효과
-          gsap.fromTo(gradient,
-            { rotation: 0, transformOrigin: "525px 525px" },
-            {
-              rotation: 360,
-              duration: 2,
-              ease: "power2.out",
-              onStart: () => {
-                circleRef.current!.setAttribute('stroke', 'url(#strokeGradient)');
+            // 그라디언트 회전으로 색상 변화 효과
+            gsap.fromTo(
+              gradient,
+              { rotation: 0, transformOrigin: '525px 525px' },
+              {
+                rotation: 360,
+                duration: 2,
+                ease: 'power2.out',
+                onStart: () => {
+                  circleRef.current!.setAttribute(
+                    'stroke',
+                    'url(#strokeGradient)'
+                  );
+                },
               }
-            }
-          );
+            );
+          }
         }
-      }
-    }, [], "+=0.5");
+      },
+      [],
+      '+=0.5'
+    );
 
     // 3. 원 선 분해 및 흩어지기
-    timeline.call(() => {
-      createCircleDisintegration();
-    }, [], "+=0.3");
+    timeline.call(
+      () => {
+        createCircleDisintegration();
+      },
+      [],
+      '+=0.3'
+    );
 
     // 4. 전체 페이드아웃 (더 긴 유지 시간)
-    timeline.to(containerRef.current, {
-      opacity: 0,
-      duration: 1.2,
-      ease: "power2.inOut",
-      onComplete: () => {
-        setShowContent(false);
-        setTimeout(onComplete, 100);
-      }
-    }, "+=2.5"); // 파티클 효과를 더 오래 볼 수 있도록 딜레이 증가
+    timeline.to(
+      containerRef.current,
+      {
+        opacity: 0,
+        duration: 1.2,
+        ease: 'power2.inOut',
+        onComplete: () => {
+          setShowContent(false);
+          setTimeout(onComplete, 100);
+        },
+      },
+      '+=2.5'
+    ); // 파티클 효과를 더 오래 볼 수 있도록 딜레이 증가
 
     return () => {
       timeline.kill();
@@ -124,7 +152,7 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
       segment.style.height = isMobile ? '6px' : '10px';
       segment.style.left = '50%';
       segment.style.top = '50%';
-      segment.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px) rotate(${angle + Math.PI/2}rad)`;
+      segment.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px) rotate(${angle + Math.PI / 2}rad)`;
       segment.style.transformOrigin = 'center';
       segment.style.borderRadius = '2px';
       segment.style.opacity = '0'; // 처음에 보이지 않게
@@ -134,11 +162,14 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
       // 반시계 방향으로 흩어지면서 점점 사라지기
       const spreadAngle = angle - Math.PI * 0.2; // 반시계 방향으로 변경
       const baseSpreadDistance = isMobile ? 200 : isTablet ? 300 : 400;
-      const spreadDistance = baseSpreadDistance + Math.random() * (isMobile ? 200 : isTablet ? 300 : 500);
+      const spreadDistance =
+        baseSpreadDistance +
+        Math.random() * (isMobile ? 200 : isTablet ? 300 : 500);
       const spreadX = Math.cos(spreadAngle) * spreadDistance;
       const spreadY = Math.sin(spreadAngle) * spreadDistance;
 
-      gsap.fromTo(segment,
+      gsap.fromTo(
+        segment,
         {
           opacity: 0,
         },
@@ -149,7 +180,7 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
           scale: Math.random() * 1.5 + 0.5,
           rotation: `+=${Math.random() * 360}`,
           duration: 3.5, // 퍼지는 시간 더 길게
-          ease: "power2.out",
+          ease: 'power2.out',
           delay: (i / numSegments) * 1.2, // 퍼지는 딜레이도 더 길게
         }
       );
@@ -159,7 +190,7 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
         opacity: 0,
         duration: 2.5, // 사라지는 시간도 더 길게
         delay: (i / numSegments) * 1.2 + 1.0, // 더 오래 보이다가 사라지기
-        ease: "power2.out",
+        ease: 'power2.out',
       });
     }
 

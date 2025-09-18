@@ -27,7 +27,15 @@ const SkillCard = ({ name, description, icon, color }: SkillCardProps) => {
               className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12"
             >
               <path
-                d={icon && icon in simpleIcons ? (simpleIcons[icon as keyof typeof simpleIcons] as { path: string }).path : ''}
+                d={
+                  icon && icon in simpleIcons
+                    ? (
+                        simpleIcons[icon as keyof typeof simpleIcons] as {
+                          path: string;
+                        }
+                      ).path
+                    : ''
+                }
                 fill={color || '#ffffff'}
               />
             </svg>

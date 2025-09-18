@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import { FaGithub, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import {
+  FaGithub,
+  FaChevronLeft,
+  FaChevronRight,
+  FaTimes,
+} from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import { Project } from '../data/projectsData';
 
 interface ProjectCardProps {
@@ -14,6 +20,7 @@ const ProjectCard = ({
   onDetailClick,
 }: ProjectCardProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
   const nextImage = () => {
     setCurrentImageIndex((prev) =>
@@ -82,12 +89,30 @@ const ProjectCard = ({
   const rightContent = (
     <div className="relative h-64 md:h-80 lg:h-96">
       {/* 이미지 컨테이너 */}
-      <div className="w-full h-full rounded-md overflow-hidden bg-primary">
+      <div
+        className="w-full h-full rounded-md overflow-hidden bg-primary cursor-pointer"
+        onClick={() => setIsImageModalOpen(true)}
+      >
         {project.images.length > 0 && (
-          <img
+          <motion.img
+            key={currentImageIndex}
             src={project.images[currentImageIndex]}
             alt={`${project.title} 이미지 ${currentImageIndex + 1}`}
-            className="w-full h-full object-contain"
+            className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.1}
+            onDragEnd={(event, info) => {
+              const threshold = 50;
+              if (info.offset.x > threshold && project.images.length > 1) {
+                prevImage();
+              } else if (info.offset.x < -threshold && project.images.length > 1) {
+                nextImage();
+              }
+            }}
+            initial={{ x: 0 }}
+            animate={{ x: 0 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
           />
         )}
       </div>
@@ -130,17 +155,109 @@ const ProjectCard = ({
   );
 
   return (
-    <div
-      className={`flex flex-col lg:flex-row gap-8 lg:gap-16 items-start ${
-        isReversed ? 'lg:flex-row-reverse' : ''
-      }`}
-    >
-      {/* 콘텐츠 - 모바일에서는 위에, 데스크톱에서는 왼쪽/오른쪽 */}
-      <div className="flex-1 order-1">{leftContent}</div>
+    <>
+      <div
+        className={`flex flex-col lg:flex-row gap-8 lg:gap-16 items-start ${
+          isReversed ? 'lg:flex-row-reverse' : ''
+        }`}
+      >
+        {/* 콘텐츠 - 모바일에서는 위에, 데스크톱에서는 왼쪽/오른쪽 */}
+        <div className="flex-1 order-1">{leftContent}</div>
 
-      {/* 이미지 - 모바일에서는 아래(마지막), 데스크톱에서는 왼쪽/오른쪽 */}
-      <div className="flex-1 order-2">{rightContent}</div>
-    </div>
+        {/* 이미지 - 모바일에서는 아래(마지막), 데스크톱에서는 왼쪽/오른쪽 */}
+        <div className="flex-1 order-2">{rightContent}</div>
+      </div>
+
+      {/* 이미지 모달 */}
+      {isImageModalOpen && (
+        <motion.div
+          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setIsImageModalOpen(false)}
+        >
+          <motion.div
+            className="relative max-w-5xl max-h-full w-full h-full flex items-center justify-center"
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0.8 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* 닫기 버튼 */}
+            <button
+              onClick={() => setIsImageModalOpen(false)}
+              className="absolute top-4 right-4 z-10 w-10 h-10 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full flex items-center justify-center text-white transition-all duration-300"
+            >
+              <FaTimes className="w-5 h-5" />
+            </button>
+
+            {/* 큰 이미지 */}
+            <motion.img
+              key={currentImageIndex}
+              src={project.images[currentImageIndex]}
+              alt={`${project.title} 이미지 ${currentImageIndex + 1}`}
+              className="max-w-full max-h-full object-contain rounded-lg"
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.1}
+              onDragEnd={(event, info) => {
+                const threshold = 50;
+                if (info.offset.x > threshold && project.images.length > 1) {
+                  prevImage();
+                } else if (info.offset.x < -threshold && project.images.length > 1) {
+                  nextImage();
+                }
+              }}
+              initial={{ x: 0 }}
+              animate={{ x: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            />
+
+            {/* 좌우 네비게이션 (이미지가 여러 개일 때만) */}
+            {project.images.length > 1 && (
+              <>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    prevImage();
+                  }}
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full flex items-center justify-center text-white transition-all duration-300"
+                >
+                  <FaChevronLeft className="w-6 h-6" />
+                </button>
+
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    nextImage();
+                  }}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full flex items-center justify-center text-white transition-all duration-300"
+                >
+                  <FaChevronRight className="w-6 h-6" />
+                </button>
+              </>
+            )}
+
+            {/* 이미지 인디케이터 */}
+            {project.images.length > 1 && (
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+                {project.images.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`w-2 h-2 rounded-full ${
+                      index === currentImageIndex
+                        ? 'bg-white'
+                        : 'bg-white bg-opacity-50'
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
+          </motion.div>
+        </motion.div>
+      )}
+    </>
   );
 };
 

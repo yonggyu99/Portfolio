@@ -60,8 +60,10 @@ const AboutSection = () => {
         <h2 className="text-primary text-2xl md:text-4xl font-bold mb-4">
           <span className="text-secondary">01. </span>
           About Me
-          <div className="inline-block ml-4 md:ml-8 w-32 md:w-72 h-0.5 bg-line align-middle"></div>
+          <div className="hidden md:inline-block ml-4 md:ml-8 w-32 md:w-72 h-0.5 bg-line align-middle"></div>
         </h2>
+        {/* 모바일용 하단 선 */}
+        <div className="block md:hidden w-32 h-0.5 bg-line mt-2"></div>
       </div>
 
       <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-16 lg:gap-28">
@@ -150,69 +152,60 @@ const AboutSection = () => {
         </div>
 
         {/* Content */}
-        <div className="max-w-xl space-y-8 md:space-y-16 text-left order-2 lg:order-none">
+        <div className="w-full space-y-6 md:space-y-10 text-left order-2 lg:order-none">
           {/* 학력 Section */}
-          <div className="flex">
-            <div className="w-0.5 bg-line mr-4 md:mr-8 flex-shrink-0 self-stretch"></div>
-            <div className="flex-1">
-              <h3 className="text-secondary text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-6">
-                학력
-              </h3>
-              <div className="space-y-3 md:space-y-4">
-                <div>
-                  <h4 className="text-primary text-base md:text-lg lg:text-xl font-semibold">
-                    부경대학교 전자공학과 학사
-                  </h4>
-                  <p className="text-line text-sm md:text-base lg:text-lg">
-                    2018.03~2025.02
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-primary text-base md:text-lg lg:text-xl font-semibold">
-                    LG U+ 유레카 프론트엔드 과정
-                  </h4>
-                  <p className="text-line text-sm md:text-base lg:text-lg">
-                    2025.01~2025.08
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* 수상 Section */}
-          <div className="flex">
-            <div className="w-0.5 bg-line mr-4 md:mr-8 flex-shrink-0 self-stretch"></div>
-            <div className="flex-1">
-              <h3 className="text-secondary text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-6">
-                수상
-              </h3>
+          <div className="pb-6 mb-6 border-b border-line w-full">
+            <h3 className="text-secondary text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-6">
+              학력
+            </h3>
+            <div className="space-y-3 md:space-y-4">
               <div>
                 <h4 className="text-primary text-base md:text-lg lg:text-xl font-semibold">
-                  LG U+ 유레카 최종 융합프로젝트
+                  부경대학교 전자공학과 학사
                 </h4>
                 <p className="text-line text-sm md:text-base lg:text-lg">
-                  우수상(IT-PLACE) 2025.08.12
+                  2018.03~2025.02
+                </p>
+              </div>
+              <div>
+                <h4 className="text-primary text-base md:text-lg lg:text-xl font-semibold">
+                  LG U+ 유레카 프론트엔드 과정
+                </h4>
+                <p className="text-line text-sm md:text-base lg:text-lg">
+                  2025.01~2025.08
                 </p>
               </div>
             </div>
           </div>
 
+          {/* 수상 Section */}
+          <div className="pb-6 mb-6 border-b border-line w-full">
+            <h3 className="text-secondary text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-6">
+              수상
+            </h3>
+            <div>
+              <h4 className="text-primary text-base md:text-lg lg:text-xl font-semibold">
+                LG U+ 유레카 최종 융합프로젝트
+              </h4>
+              <p className="text-line text-sm md:text-base lg:text-lg">
+                우수상(IT-PLACE) 2025.08.12
+              </p>
+            </div>
+          </div>
+
           {/* 자격증 Section */}
-          <div className="flex">
-            <div className="w-0.5 bg-line mr-4 md:mr-8 flex-shrink-0 self-stretch"></div>
-            <div className="flex-1">
-              <h3 className="text-secondary text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-6">
-                자격증
-              </h3>
-              <div className="space-y-3 md:space-y-4">
-                <div>
-                  <h4 className="text-primary text-base md:text-lg lg:text-xl font-semibold">
-                    정보처리기사
-                  </h4>
-                  <p className="text-line text-sm md:text-base lg:text-lg">
-                    2024.06.18
-                  </p>
-                </div>
+          <div className="pb-6 mb-6">
+            <h3 className="text-secondary text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-6">
+              자격증
+            </h3>
+            <div className="space-y-3 md:space-y-4">
+              <div>
+                <h4 className="text-primary text-base md:text-lg lg:text-xl font-semibold">
+                  정보처리기사
+                </h4>
+                <p className="text-line text-sm md:text-base lg:text-lg">
+                  2024.06.18
+                </p>
               </div>
             </div>
           </div>
@@ -270,7 +263,7 @@ const AboutSection = () => {
                   ease: 'easeInOut',
                 }}
               >
-                Click&nbsp;me!
+                Click&nbsp;Me!
               </motion.span>
             )}
           </motion.div>

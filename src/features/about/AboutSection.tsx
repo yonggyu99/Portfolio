@@ -172,7 +172,7 @@ const AboutSection = () => {
                     LG U+ 유레카 프론트엔드 과정
                   </h4>
                   <p className="text-line text-base md:text-lg lg:text-xl">
-                    2018.03~2025.02
+                    2025.01~2025.08
                   </p>
                 </div>
               </div>

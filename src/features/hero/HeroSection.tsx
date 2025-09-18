@@ -1,66 +1,78 @@
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 const HeroSection = () => {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
-        duration: 0.8,
+        staggerChildren: 0.5,
+        duration: 1.2,
       },
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8 },
+      transition: { duration: 1.2, ease: 'easeOut' },
     },
   };
 
   return (
-    <div className="text-left w-full max-w-6xl px-4 md:px-8 h-screen flex items-center justify-center -mt-20">
+    <div className="text-center w-full max-w-6xl px-4 md:px-8 h-screen flex items-center justify-center -mt-20">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.3 }}
       >
+        <motion.div
+          variants={itemVariants}
+          className="mb-8 leading-normal tracking-wider"
+        >
+          <div className="text-primary text-3xl md:text-4xl lg:text-5xl mb-4">
+            안녕하세요
+          </div>
+          <div className="text-secondary text-4xl md:text-5xl lg:text-6xl mb-4">
+            Frontend Developer
+          </div>
+          <div className="text-white font-bold text-5xl md:text-6xl lg:text-7xl mb-8">
+            박용규 입니다.
+          </div>
+          <div className="text-primary text-xl md:text-2xl mb-6">
+            사람들이{' '}
+            <span className="text-secondary font-bold text-2xl md:text-3xl">
+              편하게
+            </span>{' '}
+            다가갈 수 있는
+            <br />서비스를 제공하기 위해 노력하고 있습니다.
+          </div>
+        </motion.div>
+
         <motion.p
           variants={itemVariants}
-          className="text-primary mb-2 md:mb-4 lg:mb-5 text-sm md:text-lg lg:text-xl leading-normal tracking-wider"
+          className="text-primary text-xl md:text-2xl leading-normal tracking-wider"
         >
-          안녕하세요, 저는 Frontend Developer
-        </motion.p>
-
-        <motion.h1
-          variants={itemVariants}
-          className="text-white font-bold mb-3 md:mb-5 lg:mb-7 text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl leading-normal tracking-wider"
-        >
-          박용규 입니다.
-        </motion.h1>
-
-        <motion.p
-          variants={itemVariants}
-          className="text-primary mb-4 md:mb-7 lg:mb-9 text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl leading-normal tracking-wider"
-        >
-          사람들이 편하게 다가갈 수 있는 웹을 만드는
-          <br className="hidden sm:block" />
-          <span className="sm:hidden"> </span>
-          개발자가 되기 위해 노력하고 있습니다.
-        </motion.p>
-
-        <motion.p
-          variants={itemVariants}
-          className="text-secondary text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-normal tracking-wider"
-        >
-          <span className="font-bold text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">끊임없는 도전</span>과 <span className="font-bold text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">배움</span>을 통해 한 단계씩 <span className="font-bold text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">성장</span>하며,
-          <br className="hidden sm:block" />
-          <span className="sm:hidden"> </span>
-          더 나은 서비스와 경험을 만들어가고 있습니다.
+          끊임없는{' '}
+          <span className="text-secondary font-bold text-2xl md:text-3xl">
+            도전
+          </span>
+          과{' '}
+          <span className="text-secondary font-bold text-2xl md:text-3xl">
+            배움
+          </span>
+          을 통해 {' '}
+          <span className="text-secondary font-bold text-2xl md:text-3xl">
+            한 단계씩
+          </span>{' '}
+          <span className="text-secondary font-bold text-2xl md:text-3xl">
+            성장
+          </span>
+          하며,
+          <br />더 나은 서비스와 경험을 만들어가고 있습니다.
         </motion.p>
       </motion.div>
     </div>

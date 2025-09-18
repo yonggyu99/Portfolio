@@ -176,7 +176,7 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-gray-950 via-slate-950 to-black"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-background"
     >
       {/* 배경 별들 */}
       <div className="absolute inset-0">

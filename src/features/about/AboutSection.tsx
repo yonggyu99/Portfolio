@@ -63,7 +63,7 @@ const AboutSection = () => {
           <div className="hidden md:inline-block ml-4 md:ml-8 w-32 md:w-72 h-0.5 bg-line align-middle"></div>
         </h2>
         {/* 모바일용 하단 선 */}
-        <div className="block md:hidden w-32 h-0.5 bg-line mt-2"></div>
+        <div className="block md:hidden w-full h-0.5 bg-line mt-2"></div>
       </div>
 
       <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-16 lg:gap-28">

@@ -36,19 +36,42 @@ const ContactSection = () => {
     <section
       id="contact"
       data-section="contact"
-      className="min-h-screen flex items-center justify-center px-4 md:px-8"
+      className="min-h-screen flex items-center justify-center px-4 md:px-8 relative"
     >
+      {/* 배경 파티클 */}
+      <div className="fixed inset-0 pointer-events-none">
+        {Array.from({ length: 80 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-primary rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              opacity: [0, 1, 0],
+              scale: [0, 1, 0],
+            }}
+            transition={{
+              duration: 2 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 4,
+            }}
+          />
+        ))}
+      </div>
+
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.3 }}
-        className="text-center"
+        className="text-center relative z-10"
       >
         {/* 상단 장식 라인 */}
         <motion.div
           variants={lineVariants}
-          className="w-32 h-0.5 bg-primary mx-auto mb-8"
+          className="w-full max-w-sm h-0.5 bg-primary mx-auto mb-8"
         />
 
         <motion.h2
@@ -112,7 +135,7 @@ const ContactSection = () => {
         {/* 하단 장식 라인 */}
         <motion.div
           variants={lineVariants}
-          className="w-32 h-0.5 bg-primary mx-auto mt-12"
+          className="w-full max-w-sm h-0.5 bg-primary mx-auto mt-12"
         />
       </motion.div>
     </section>

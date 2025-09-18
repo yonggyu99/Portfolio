@@ -74,7 +74,7 @@ const ProjectCard = ({ project, isReversed = false, onDetailClick }: ProjectCard
   const rightContent = (
     <div className="relative h-64 md:h-80 lg:h-96">
       {/* 이미지 컨테이너 */}
-      <div className="w-full h-full border border-secondary rounded-md overflow-hidden bg-primary">
+      <div className="w-full h-full rounded-md overflow-hidden bg-primary">
         {project.images.length > 0 && (
           <img
             src={project.images[currentImageIndex]}

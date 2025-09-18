@@ -46,8 +46,10 @@ const ProjectsSection = () => {
         <h2 className="text-primary text-2xl md:text-4xl font-bold mb-4">
           <span className="text-secondary">03. </span>
           Projects
-          <div className="inline-block ml-4 md:ml-8 w-32 md:w-72 h-0.5 bg-line align-middle"></div>
+          <div className="hidden md:inline-block ml-4 md:ml-8 w-32 md:w-72 h-0.5 bg-line align-middle"></div>
         </h2>
+        {/* 모바일용 하단 선 */}
+        <div className="block md:hidden w-full h-0.5 bg-line mt-2"></div>
       </motion.div>
 
       {/* Projects List */}

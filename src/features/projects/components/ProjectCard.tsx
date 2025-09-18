@@ -102,17 +102,20 @@ const ProjectCard = ({
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.1}
-            onDragEnd={(event, info) => {
+            onDragEnd={(_, info) => {
               const threshold = 50;
               if (info.offset.x > threshold && project.images.length > 1) {
                 prevImage();
-              } else if (info.offset.x < -threshold && project.images.length > 1) {
+              } else if (
+                info.offset.x < -threshold &&
+                project.images.length > 1
+              ) {
                 nextImage();
               }
             }}
             initial={{ x: 0 }}
             animate={{ x: 0 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           />
         )}
       </div>
@@ -201,17 +204,20 @@ const ProjectCard = ({
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={0.1}
-              onDragEnd={(event, info) => {
+              onDragEnd={(_, info) => {
                 const threshold = 50;
                 if (info.offset.x > threshold && project.images.length > 1) {
                   prevImage();
-                } else if (info.offset.x < -threshold && project.images.length > 1) {
+                } else if (
+                  info.offset.x < -threshold &&
+                  project.images.length > 1
+                ) {
                   nextImage();
                 }
               }}
               initial={{ x: 0 }}
               animate={{ x: 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             />
 
             {/* 좌우 네비게이션 (이미지가 여러 개일 때만) */}

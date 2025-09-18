@@ -94,28 +94,10 @@ const ProjectCard = ({
         onClick={() => setIsImageModalOpen(true)}
       >
         {project.images.length > 0 && (
-          <motion.img
-            key={currentImageIndex}
+          <img
             src={project.images[currentImageIndex]}
             alt={`${project.title} 이미지 ${currentImageIndex + 1}`}
             className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.1}
-            onDragEnd={(_, info) => {
-              const threshold = 50;
-              if (info.offset.x > threshold && project.images.length > 1) {
-                prevImage();
-              } else if (
-                info.offset.x < -threshold &&
-                project.images.length > 1
-              ) {
-                nextImage();
-              }
-            }}
-            initial={{ x: 0 }}
-            animate={{ x: 0 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           />
         )}
       </div>
@@ -187,38 +169,22 @@ const ProjectCard = ({
             exit={{ scale: 0.8 }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* 닫기 버튼 */}
-            <button
-              onClick={() => setIsImageModalOpen(false)}
-              className="absolute top-4 right-4 z-10 w-10 h-10 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full flex items-center justify-center text-white transition-all duration-300"
-            >
-              <FaTimes className="w-5 h-5" />
-            </button>
-
             {/* 큰 이미지 */}
-            <motion.img
-              key={currentImageIndex}
-              src={project.images[currentImageIndex]}
-              alt={`${project.title} 이미지 ${currentImageIndex + 1}`}
-              className="max-w-full max-h-full object-contain rounded-lg"
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.1}
-              onDragEnd={(_, info) => {
-                const threshold = 50;
-                if (info.offset.x > threshold && project.images.length > 1) {
-                  prevImage();
-                } else if (
-                  info.offset.x < -threshold &&
-                  project.images.length > 1
-                ) {
-                  nextImage();
-                }
-              }}
-              initial={{ x: 0 }}
-              animate={{ x: 0 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            />
+            <div className="relative">
+              <img
+                src={project.images[currentImageIndex]}
+                alt={`${project.title} 이미지 ${currentImageIndex + 1}`}
+                className="max-w-full max-h-full object-contain rounded-lg"
+              />
+
+              {/* 닫기 버튼 */}
+              <button
+                onClick={() => setIsImageModalOpen(false)}
+                className="absolute top-2 right-2 z-10 w-8 h-8 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full flex items-center justify-center text-white transition-all duration-300"
+              >
+                <FaTimes className="w-4 h-4" />
+              </button>
+            </div>
 
             {/* 좌우 네비게이션 (이미지가 여러 개일 때만) */}
             {project.images.length > 1 && (

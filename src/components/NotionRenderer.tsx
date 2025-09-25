@@ -203,6 +203,13 @@ const NotionRenderer = ({ pageId, className = '' }: NotionRendererProps) => {
         );
       }
 
+      case 'quote':
+        return (
+          <blockquote key={id} className="border-l-4 border-blue-400 pl-4 py-2 mb-4 bg-blue-50 italic text-gray-700">
+            {renderRichText(block.quote?.rich_text || [])}
+          </blockquote>
+        );
+
       case 'divider':
         return <hr key={id} className="my-8 border-gray-300" />;
 

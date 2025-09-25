@@ -74,7 +74,6 @@ export const projectsData: Project[] = [
     category: 'Team Projects',
     title: 'ChillLog',
     period: '2025.03.13~2025.03.21',
-    domainUrl: 'https://chilllog.dev',
     description:
       'ChillLog는 개인 블로그 플랫폼으로, 사용자가 게시글을 작성하고 공유할 수 있는 Velog 클론 프로젝트입니다. 7조 Pat&Mat 팀이 개발한 풀스택 웹 애플리케이션입니다.',
     images: [

@@ -59,6 +59,10 @@ interface NotionBlock {
     };
     caption: RichText[];
   };
+  quote?: {
+    rich_text: RichText[];
+    color: string;
+  };
 }
 
 interface NotionPage {

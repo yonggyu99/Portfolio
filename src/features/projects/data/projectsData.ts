@@ -2,6 +2,7 @@ export interface Project {
   category: string;
   title: string;
   period: string;
+  domainUrl?: string;
   description: string;
   images: string[];
   githubUrl: string;
@@ -14,6 +15,7 @@ export const projectsData: Project[] = [
     category: 'Team Projects',
     title: 'IT:PLACE',
     period: '2025.06.30~2025.08.08',
+    domainUrl: 'https://www.itplace.click/',
     description:
       'ItPlace는 사용자의 위치를 기반으로 주변 가맹점의 멤버십 혜택을 실시간으로 제공하는 지도 플랫폼입니다. 카카오맵 API와 AI 추천 시스템을 활용하여 개인 맞춤형 혜택을 제공하고, 복잡한 상태 관리와 최적화된 UX/UI를 통해 직관적인 사용자 경험을 제공합니다.',
     images: [
@@ -32,6 +34,7 @@ export const projectsData: Project[] = [
     category: 'Team Projects',
     title: 'UPlusPick',
     period: '2025.06.09~2025.06.27',
+    domainUrl: 'https://upluspick.netlify.app/',
     description:
       'U+Pick은 LG U+ 고객들을 위한 맞춤형 통신 요금제 추천 및 결합 매칭 플랫폼입니다. AI 챗봇을 통한 개인별 요금제 상담, 타인과의 결합 그룹 자동 매칭, 멤버십 혜택 지도 등을 제공하는 종합적인 통신 서비스 플랫폼입니다.',
     images: [
@@ -51,6 +54,7 @@ export const projectsData: Project[] = [
     category: 'Team Projects',
     title: 'GitPulse',
     period: '2025.05.07~2025.05.20',
+    domainUrl: 'https://gitpulse-6bpa.vercel.app/',
     description:
       'GitPulse는 GitHub 활동을 시각적으로 분석하고 개발자 성과를 추적할 수 있는 웹 플랫폼입니다. GitHub OAuth를 통한 인증, 실시간 커밋 분석, 개발 챌린지 시스템 등을 제공하는 종합적인 개발자 대시보드입니다.',
     images: [
@@ -70,6 +74,7 @@ export const projectsData: Project[] = [
     category: 'Team Projects',
     title: 'ChillLog',
     period: '2025.03.13~2025.03.21',
+    domainUrl: 'https://chilllog.dev',
     description:
       'ChillLog는 개인 블로그 플랫폼으로, 사용자가 게시글을 작성하고 공유할 수 있는 Velog 클론 프로젝트입니다. 7조 Pat&Mat 팀이 개발한 풀스택 웹 애플리케이션입니다.',
     images: [

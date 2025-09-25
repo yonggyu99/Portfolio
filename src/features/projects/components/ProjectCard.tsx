@@ -44,10 +44,22 @@ const ProjectCard = ({
             {project.category}
           </p>
 
-          {/* 프로젝트 제목 */}
-          <h3 className="text-primary text-2xl md:text-3xl font-bold mb-2">
-            {project.title}
-          </h3>
+          {/* 프로젝트 제목과 도메인 URL */}
+          <div className="flex flex-col md:flex-row md:items-baseline md:gap-4 mb-2">
+            <h3 className="text-primary text-2xl md:text-3xl font-bold">
+              {project.title}
+            </h3>
+            {project.domainUrl && (
+              <a
+                href={project.domainUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-line text-sm md:text-base hover:text-secondary transition-colors duration-300"
+              >
+                {project.domainUrl}
+              </a>
+            )}
+          </div>
 
           {/* 기간 */}
           <p className="text-line text-sm md:text-base mb-4">

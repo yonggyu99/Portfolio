@@ -205,7 +205,10 @@ const NotionRenderer = ({ pageId, className = '' }: NotionRendererProps) => {
 
       case 'quote':
         return (
-          <blockquote key={id} className="border-l-4 border-blue-400 pl-4 py-2 mb-4 bg-blue-50 italic text-gray-700">
+          <blockquote
+            key={id}
+            className="border-l-4 border-blue-400 pl-4 py-2 mb-4 bg-blue-50 italic text-gray-700"
+          >
             {renderRichText(block.quote?.rich_text || [])}
           </blockquote>
         );
@@ -227,9 +230,23 @@ const NotionRenderer = ({ pageId, className = '' }: NotionRendererProps) => {
 
   const renderRichText = (richText: RichText[]): (string | ReactElement)[] => {
     return richText.map((text, index) => {
-      const { annotations, plain_text } = text;
+      const { annotations, plain_text, href } = text;
       let element: string | ReactElement = plain_text;
 
+      if (href) {
+        element = (
+          <a
+            key={index}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-800
+  underline"
+          >
+            {element}
+          </a>
+        );
+      }
       if (annotations?.bold) element = <strong key={index}>{element}</strong>;
       if (annotations?.italic) element = <em key={index}>{element}</em>;
       if (annotations?.code)

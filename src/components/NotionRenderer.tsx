@@ -240,7 +240,7 @@ const NotionRenderer = ({ pageId, className = '' }: NotionRendererProps) => {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-bold hover:underline"
+            className="hover:font-bold hover:underline"
           >
             {element}
           </a>

@@ -31,18 +31,18 @@ const HeroSection = () => {
       >
         <motion.div
           variants={itemVariants}
-          className="mb-8 leading-normal tracking-wider"
+          className="leading-normal tracking-wider"
         >
-          <div className="text-primary text-xl md:text-4xl lg:text-5xl mb-4">
+          <div className="text-primary text-lg md:text-4xl lg:text-5xl mb-1 md:mb-4">
             안녕하세요
           </div>
-          <div className="text-secondary text-2xl md:text-5xl lg:text-6xl mb-4">
+          <div className="text-secondary text-xl md:text-5xl lg:text-6xl mb-1 md:mb-4">
             Frontend Developer
           </div>
-          <div className="text-white font-bold text-3xl md:text-6xl lg:text-7xl mb-8">
+          <div className="text-white font-bold text-2xl md:text-6xl lg:text-7xl mb-2 md:mb-8">
             박용규 입니다.
           </div>
-          <div className="text-primary text-xs md:text-2xl mb-6">
+          <div className="text-primary text-xs md:text-2xl mb-2 md:mb-6">
             사람들이{' '}
             <span className="text-secondary font-bold text-sm md:text-3xl">
               편하게
@@ -55,21 +55,21 @@ const HeroSection = () => {
 
         <motion.p
           variants={itemVariants}
-          className="text-primary text-base md:text-2xl leading-normal tracking-wider"
+          className="text-primary text-xs md:text-2xl leading-normal tracking-wider"
         >
           끊임없는{' '}
-          <span className="text-secondary font-bold text-lg md:text-3xl">
+          <span className="text-secondary font-bold text-sm md:text-3xl">
             도전
           </span>
           과{' '}
-          <span className="text-secondary font-bold text-lg md:text-3xl">
+          <span className="text-secondary font-bold text-sm md:text-3xl">
             배움
           </span>
           을 통해{' '}
-          <span className="text-secondary font-bold text-lg md:text-3xl">
+          <span className="text-secondary font-bold text-sm md:text-3xl">
             한 단계씩
           </span>{' '}
-          <span className="text-secondary font-bold text-lg md:text-3xl">
+          <span className="text-secondary font-bold text-sm md:text-3xl">
             성장
           </span>
           하며,

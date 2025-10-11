@@ -227,8 +227,23 @@ const NotionRenderer = ({ pageId, className = '' }: NotionRendererProps) => {
 
   const renderRichText = (richText: RichText[]): (string | ReactElement)[] => {
     return richText.map((text, index) => {
-      const { annotations, plain_text } = text;
+      const { annotations, plain_text, href } = text;
       let element: string | ReactElement = plain_text;
+
+      // 링크 처리
+      if (href) {
+        element = (
+          <a
+            key={index}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-800 underline transition-colors duration-200"
+          >
+            {element}
+          </a>
+        );
+      }
 
       if (annotations?.bold) element = <strong key={index}>{element}</strong>;
       if (annotations?.italic) element = <em key={index}>{element}</em>;

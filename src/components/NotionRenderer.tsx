@@ -108,9 +108,6 @@ const NotionRenderer = ({ pageId, className = '' }: NotionRendererProps) => {
       try {
         setLoading(true);
 
-        // 강제 로딩 지연 (2-3초)
-        await new Promise((resolve) => setTimeout(resolve, 2500));
-
         const response = await fetch(`/api/notion/${pageId}`);
 
         if (!response.ok) {

@@ -1,7 +1,8 @@
-import { motion, Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { FaGithub, FaBlog } from 'react-icons/fa';
 import { MdEmail, MdPhone } from 'react-icons/md';
 import { useState, useEffect } from 'react';
+import { containerVariants, itemVariants, lineVariants } from '../../utils/animations';
 
 const ContactSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -27,34 +28,6 @@ const ContactSection = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-        duration: 0.8,
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8 },
-    },
-  };
-
-  const lineVariants: Variants = {
-    hidden: { scaleX: 0, opacity: 0 },
-    visible: {
-      scaleX: 1,
-      opacity: 1,
-      transition: { duration: 1.2, ease: 'easeInOut' },
-    },
-  };
 
   return (
     <section

@@ -1,6 +1,6 @@
 import Modal from 'react-modal';
 import { Project } from '../data/projectsData';
-import NotionRenderer from '../../../components/NotionRenderer';
+import NotionRenderer from '../../../components/common/NotionRenderer';
 
 interface ProjectModalProps {
   project: Project;

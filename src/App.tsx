@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Main from './pages/Main';
-import WelcomeScreen from './components/WelcomeScreen';
+import WelcomeScreen from './components/common/WelcomeScreen';
 import './App.css';
 
 function App() {

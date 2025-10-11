@@ -2,44 +2,11 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import SkillCard from './components/SkillCard';
 import { skillsData, categories } from './data/skillsData';
+import SectionTitle from '../../components/ui/SectionTitle';
+import { sectionVariants, skillContainerVariants, listItemVariants } from '../../utils/animations';
 
 const SkillsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState('Language');
-
-  const handleCategoryClick = (category: string) => {
-    const currentScrollY = window.scrollY;
-    setSelectedCategory(category);
-    setTimeout(() => window.scrollTo(0, currentScrollY), 0);
-  };
-
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8 },
-    },
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        duration: 0.6,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.6 },
-    },
-  };
 
   return (
     <motion.div
@@ -52,31 +19,25 @@ const SkillsSection = () => {
     >
       {/* Section Title */}
       <motion.div
-        className="mb-16 md:mb-28 text-left pt-16 md:pt-24"
-        variants={itemVariants}
+        className="pt-16 md:pt-24"
+        variants={listItemVariants}
       >
-        <h2 className="text-primary text-2xl md:text-4xl font-bold mb-4">
-          <span className="text-secondary">02. </span>
-          Skills
-          <div className="hidden md:inline-block ml-4 md:ml-8 w-32 md:w-72 h-0.5 bg-line align-middle"></div>
-        </h2>
-        {/* 모바일용 하단 선 */}
-        <div className="block md:hidden w-full h-0.5 bg-line mt-2"></div>
+        <SectionTitle number="02" title="Skills" />
       </motion.div>
 
       <motion.div
         className="flex flex-col lg:flex-row gap-8 lg:gap-24"
-        variants={containerVariants}
+        variants={skillContainerVariants}
       >
         {/* Category Tabs - Mobile: Horizontal, Desktop: Vertical */}
-        <motion.div className="flex lg:block" variants={itemVariants}>
+        <motion.div className="flex lg:block" variants={listItemVariants}>
           {/* Mobile Horizontal Layout */}
           <div className="lg:hidden w-full mb-8">
             <div className="flex flex-wrap gap-2 justify-center">
               {categories.map((category, index) => (
                 <motion.button
                   key={category}
-                  onClick={() => handleCategoryClick(category)}
+                  onClick={() => setSelectedCategory(category)}
                   className={`px-4 py-2 rounded-lg text-sm md:text-base transition-all duration-300 ${
                     selectedCategory === category
                       ? 'bg-secondary text-primary'
@@ -125,7 +86,7 @@ const SkillsSection = () => {
                 )}
 
                 <button
-                  onClick={() => handleCategoryClick(category)}
+                  onClick={() => setSelectedCategory(category)}
                   className={`text-left text-xl px-6 py-3 ml-2 transition-all duration-300 ${
                     selectedCategory === category
                       ? 'text-secondary'
@@ -142,7 +103,7 @@ const SkillsSection = () => {
         {/* Skills Grid */}
         <motion.div
           className="flex-1 space-y-6 md:space-y-8 lg:space-y-12 min-h-[400px] md:min-h-[600px]"
-          variants={itemVariants}
+          variants={listItemVariants}
         >
           {skillsData[selectedCategory]?.map((skill, index) => (
             <motion.div

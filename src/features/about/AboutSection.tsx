@@ -1,31 +1,16 @@
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { hashtags } from './data/aboutData';
+import SectionTitle from '../../components/ui/SectionTitle';
+import Button from '../../components/ui/Button';
+import { useIsMobile } from '../../hooks/useMediaQuery';
+import { sectionVariants } from '../../utils/animations';
 
 const AboutSection = () => {
   const [flippedCard, setFlippedCard] = useState<string | null>(null);
   const [clickingHashtag, setClickingHashtag] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<string | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8 },
-    },
-  };
+  const isMobile = useIsMobile();
 
   const handleHashtagClick = (hashtagId: string) => {
     if (isMobile) {
@@ -56,15 +41,7 @@ const AboutSection = () => {
       variants={sectionVariants}
     >
       {/* Section Title */}
-      <div className="mb-16 md:mb-28 text-left">
-        <h2 className="text-primary text-2xl md:text-4xl font-bold mb-4">
-          <span className="text-secondary">01. </span>
-          About Me
-          <div className="hidden md:inline-block ml-4 md:ml-8 w-32 md:w-72 h-0.5 bg-line align-middle"></div>
-        </h2>
-        {/* 모바일용 하단 선 */}
-        <div className="block md:hidden w-full h-0.5 bg-line mt-2"></div>
-      </div>
+      <SectionTitle number="01" title="About Me" />
 
       <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-16 lg:gap-28">
         {/* Profile Image */}
@@ -114,20 +91,17 @@ const AboutSection = () => {
                 transition={{ duration: 0.4, delay: flippedCard ? 0.4 : 0 }}
               >
                 {/* 뒤로 가기 버튼 */}
-                <motion.button
-                  className="absolute top-2 right-2 md:top-4 md:right-4 w-6 h-6 md:w-8 md:h-8 rounded-full bg-secondary text-primary font-bold text-sm md:text-lg hover:bg-white transition-colors duration-200 z-20"
+                <Button
+                  variant="close"
+                  size="sm"
                   onClick={(e) => {
                     e.stopPropagation();
                     setFlippedCard(null);
                   }}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: flippedCard ? 1 : 0 }}
-                  transition={{ duration: 0.3, delay: 0.5 }}
+                  className="absolute top-2 right-2 md:top-4 md:right-4 z-20"
                 >
                   ←
-                </motion.button>
+                </Button>
 
                 <motion.div
                   className="text-center"
@@ -290,12 +264,13 @@ const AboutSection = () => {
               <h3 className="text-secondary text-xl font-bold">
                 {hashtags.find((h) => h.id === isModalOpen)?.text}
               </h3>
-              <button
+              <Button
+                variant="close"
+                size="md"
                 onClick={() => setIsModalOpen(null)}
-                className="w-8 h-8 rounded-full bg-secondary text-primary font-bold hover:bg-white transition-colors duration-200"
               >
                 ×
-              </button>
+              </Button>
             </div>
             <p className="text-primary text-sm leading-relaxed">
               {hashtags.find((h) => h.id === isModalOpen)?.description}

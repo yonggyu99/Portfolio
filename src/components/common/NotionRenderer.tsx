@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import type { ReactElement } from 'react';
-import LoadingSpinner from './LoadingSpinner';
+import LoadingSpinner from '../ui/LoadingSpinner';
 
 interface RichText {
   type: string;
@@ -230,7 +230,17 @@ const NotionRenderer = ({ pageId, className = '' }: NotionRendererProps) => {
       const { annotations, plain_text, href } = text;
       let element: string | ReactElement = plain_text;
 
-      // 링크 처리
+      // 스타일 적용 (bold, italic, code)
+      if (annotations?.bold) element = <strong key={index}>{element}</strong>;
+      if (annotations?.italic) element = <em key={index}>{element}</em>;
+      if (annotations?.code)
+        element = (
+          <code key={index} className="bg-gray-200 px-1 rounded">
+            {element}
+          </code>
+        );
+
+      // 링크 처리 (마지막에 적용)
       if (href) {
         element = (
           <a
@@ -244,28 +254,6 @@ const NotionRenderer = ({ pageId, className = '' }: NotionRendererProps) => {
           </a>
         );
       }
-
-      if (href) {
-        element = (
-          <a
-            key={index}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:font-bold hover:underline"
-          >
-            {element}
-          </a>
-        );
-      }
-      if (annotations?.bold) element = <strong key={index}>{element}</strong>;
-      if (annotations?.italic) element = <em key={index}>{element}</em>;
-      if (annotations?.code)
-        element = (
-          <code key={index} className="bg-gray-200 px-1 rounded">
-            {element}
-          </code>
-        );
 
       return element;
     });

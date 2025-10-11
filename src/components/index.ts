@@ -1,7 +1,16 @@
 // 컴포넌트 export 파일
-export { default as Logo } from './Logo';
-export { default as Header } from './Header';
-export { default as Footer } from './Footer';
-export { default as NotionRenderer } from './NotionRenderer';
-export { default as LoadingSpinner } from './LoadingSpinner';
-export { default as WelcomeScreen } from './WelcomeScreen';
+
+// Layout
+export { default as Logo } from './layout/Logo';
+export { default as Header } from './layout/Header';
+export { default as Footer } from './layout/Footer';
+
+// UI
+export { default as LoadingSpinner } from './ui/LoadingSpinner';
+export { default as Button } from './ui/Button';
+export { default as SectionTitle } from './ui/SectionTitle';
+
+// Common
+export { default as NotionRenderer } from './common/NotionRenderer';
+export { default as WelcomeScreen } from './common/WelcomeScreen';
+export { default as ImageModal } from './common/ImageModal';

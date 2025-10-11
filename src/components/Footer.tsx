@@ -29,7 +29,7 @@ const Footer = () => {
         className="absolute bottom-0 left-8 flex flex-col items-center"
       >
         <a
-          href="https://github.com"
+          href="https://github.com/yonggyu99"
           target="_blank"
           rel="noopener noreferrer"
           className="text-white hover:text-secondary transition-colors duration-300 mb-6"

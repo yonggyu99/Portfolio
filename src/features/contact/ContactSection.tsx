@@ -143,7 +143,7 @@ const ContactSection = () => {
             className="flex items-center justify-center space-x-6 md:space-x-8 mt-8 md:mt-12"
           >
             <a
-              href="https://github.com"
+              href="https://github.com/yonggyu99"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-primary transition-colors duration-300"
@@ -151,7 +151,7 @@ const ContactSection = () => {
               <FaGithub className="w-8 h-8 md:w-10 md:h-10" />
             </a>
             <a
-              href="https://blog.com"
+              href="https://roasted-tracker-413.notion.site/18141649166a80cdac33c190cff77ae1?v=18141649166a81e59798000cb13fe287&source=copy_link"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-primary transition-colors duration-300"

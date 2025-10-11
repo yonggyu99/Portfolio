@@ -33,7 +33,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
       padding: '0',
       width: '90vw',
       height: '85vh',
-      maxWidth: '1200px',
+      maxWidth: '70vw',
       backgroundColor: '#ffffff',
       overflow: 'hidden',
     },

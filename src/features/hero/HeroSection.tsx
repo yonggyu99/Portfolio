@@ -42,9 +42,9 @@ const HeroSection = () => {
           <div className="text-white font-bold text-3xl md:text-6xl lg:text-7xl mb-8">
             박용규 입니다.
           </div>
-          <div className="text-primary text-base md:text-2xl mb-6">
+          <div className="text-primary text-xs md:text-2xl mb-6">
             사람들이{' '}
-            <span className="text-secondary font-bold text-lg md:text-3xl">
+            <span className="text-secondary font-bold text-sm md:text-3xl">
               편하게
             </span>{' '}
             다가갈 수 있는

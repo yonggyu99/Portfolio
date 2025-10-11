@@ -134,42 +134,60 @@ const NotionRenderer = ({ pageId, className = '' }: NotionRendererProps) => {
     switch (type) {
       case 'paragraph':
         return (
-          <p key={id} className="mb-3 md:mb-4 text-sm md:text-base text-gray-700 leading-relaxed">
+          <p
+            key={id}
+            className="mb-3 md:mb-4 text-sm md:text-base text-gray-700 leading-relaxed"
+          >
             {renderRichText(block.paragraph?.rich_text || [])}
           </p>
         );
 
       case 'heading_1':
         return (
-          <h1 key={id} className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 text-gray-900">
+          <h1
+            key={id}
+            className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 text-gray-900"
+          >
             {renderRichText(block.heading_1?.rich_text || [])}
           </h1>
         );
 
       case 'heading_2':
         return (
-          <h2 key={id} className="text-xl md:text-2xl lg:text-3xl font-semibold mb-3 md:mb-4 text-gray-900">
+          <h2
+            key={id}
+            className="text-xl md:text-2xl lg:text-3xl font-semibold mb-3 md:mb-4 text-gray-900"
+          >
             {renderRichText(block.heading_2?.rich_text || [])}
           </h2>
         );
 
       case 'heading_3':
         return (
-          <h3 key={id} className="text-lg md:text-xl lg:text-2xl font-medium mb-2 md:mb-3 text-gray-900">
+          <h3
+            key={id}
+            className="text-lg md:text-xl lg:text-2xl font-medium mb-2 md:mb-3 text-gray-900"
+          >
             {renderRichText(block.heading_3?.rich_text || [])}
           </h3>
         );
 
       case 'bulleted_list_item':
         return (
-          <li key={id} className="ml-4 md:ml-6 mb-1 md:mb-2 list-disc text-sm md:text-base text-gray-700">
+          <li
+            key={id}
+            className="ml-4 md:ml-6 mb-1 md:mb-2 list-disc text-sm md:text-base text-gray-700"
+          >
             {renderRichText(block.bulleted_list_item?.rich_text || [])}
           </li>
         );
 
       case 'numbered_list_item':
         return (
-          <li key={id} className="ml-4 md:ml-6 mb-1 md:mb-2 list-decimal text-sm md:text-base text-gray-700">
+          <li
+            key={id}
+            className="ml-4 md:ml-6 mb-1 md:mb-2 list-decimal text-sm md:text-base text-gray-700"
+          >
             {renderRichText(block.numbered_list_item?.rich_text || [])}
           </li>
         );

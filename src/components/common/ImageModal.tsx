@@ -82,9 +82,7 @@ const ImageModal = ({
               <div
                 key={index}
                 className={`w-2 h-2 rounded-full ${
-                  index === currentIndex
-                    ? 'bg-white'
-                    : 'bg-white bg-opacity-50'
+                  index === currentIndex ? 'bg-white' : 'bg-white bg-opacity-50'
                 }`}
               />
             ))}

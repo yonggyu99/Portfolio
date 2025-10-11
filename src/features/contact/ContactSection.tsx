@@ -2,7 +2,11 @@ import { motion } from 'framer-motion';
 import { FaGithub, FaBlog } from 'react-icons/fa';
 import { MdEmail, MdPhone } from 'react-icons/md';
 import { useState, useEffect } from 'react';
-import { containerVariants, itemVariants, lineVariants } from '../../utils/animations';
+import {
+  containerVariants,
+  itemVariants,
+  lineVariants,
+} from '../../utils/animations';
 
 const ContactSection = () => {
   const [isVisible, setIsVisible] = useState(false);

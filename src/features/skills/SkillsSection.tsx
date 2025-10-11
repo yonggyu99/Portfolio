@@ -3,7 +3,11 @@ import { motion } from 'framer-motion';
 import SkillCard from './components/SkillCard';
 import { skillsData, categories } from './data/skillsData';
 import SectionTitle from '../../components/ui/SectionTitle';
-import { sectionVariants, skillContainerVariants, listItemVariants } from '../../utils/animations';
+import {
+  sectionVariants,
+  skillContainerVariants,
+  listItemVariants,
+} from '../../utils/animations';
 
 const SkillsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState('Language');
@@ -18,10 +22,7 @@ const SkillsSection = () => {
       variants={sectionVariants}
     >
       {/* Section Title */}
-      <motion.div
-        className="pt-16 md:pt-24"
-        variants={listItemVariants}
-      >
+      <motion.div className="pt-16 md:pt-24" variants={listItemVariants}>
         <SectionTitle number="02" title="Skills" />
       </motion.div>
 

@@ -20,7 +20,8 @@ const Button = ({
 
   const variantClasses = {
     primary: 'bg-secondary text-primary hover:bg-white',
-    secondary: 'border border-secondary text-secondary hover:bg-secondary hover:text-primary',
+    secondary:
+      'border border-secondary text-secondary hover:bg-secondary hover:text-primary',
     close: 'bg-secondary text-primary hover:bg-white',
     icon: 'text-secondary hover:text-primary hover:bg-secondary',
   };

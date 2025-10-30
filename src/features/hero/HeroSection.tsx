@@ -3,9 +3,9 @@ import { motion, Variants } from 'framer-motion';
 const HeroSection = () => {
   // 공통 스타일
   const baseTextStyle =
-    'text-primary text-xs md:text-sm lg:text-sm xl:text-2xl';
+    'text-primary text-xs md:text-sm lg:text-base xl:text-2xl';
   const highlightStyle =
-    'text-secondary font-bold text-sm md:text-base lg:text-base xl:text-3xl';
+    'text-secondary font-bold text-sm md:text-base lg:text-lg xl:text-3xl';
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -38,21 +38,21 @@ const HeroSection = () => {
       >
         <motion.div
           variants={itemVariants}
-          className="text-primary text-base md:text-xl lg:text-2xl xl:text-5xl mb-1 md:mb-2 lg:mb-3 xl:mb-4"
+          className="text-primary text-base md:text-xl lg:text-3xl xl:text-5xl mb-1 md:mb-2 lg:mb-3 xl:mb-4"
         >
           안녕하세요
         </motion.div>
 
         <motion.div
           variants={itemVariants}
-          className="text-secondary text-lg md:text-2xl lg:text-3xl xl:text-6xl mb-1 md:mb-2 lg:mb-3 xl:mb-4"
+          className="text-secondary text-lg md:text-2xl lg:text-4xl xl:text-6xl mb-1 md:mb-2 lg:mb-3 xl:mb-4"
         >
           Frontend Developer
         </motion.div>
 
         <motion.div
           variants={itemVariants}
-          className="text-white font-bold text-xl md:text-3xl lg:text-4xl xl:text-7xl mb-2 md:mb-4 lg:mb-6 xl:mb-8"
+          className="text-white font-bold text-xl md:text-3xl lg:text-5xl xl:text-7xl mb-2 md:mb-4 lg:mb-6 xl:mb-8"
         >
           박용규 입니다.
         </motion.div>

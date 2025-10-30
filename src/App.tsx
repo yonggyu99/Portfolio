@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 import Main from './pages/Main';
 import WelcomeScreen from './components/common/WelcomeScreen';
 import './App.css';
@@ -12,6 +13,7 @@ function App() {
 
   return (
     <>
+      <Toaster />
       {showWelcome && <WelcomeScreen onComplete={handleWelcomeComplete} />}
       {!showWelcome && <Main />}
     </>

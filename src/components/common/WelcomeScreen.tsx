@@ -269,19 +269,17 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary mb-4 tracking-wide">
             Thank you
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-primary/80 font-light tracking-wider">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-primary/80 font-light tracking-wider mb-6">
             for visiting my portfolio
           </p>
-        </motion.div>
 
-        {/* 하단 로딩 애니메이션 */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 0.5 }}
-          className="absolute bottom-8 md:bottom-16 left-1/2 transform -translate-x-1/2"
-        >
-          <div className="flex space-x-2">
+          {/* 로딩 애니메이션 - 텍스트 바로 아래 */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 0.5 }}
+            className="flex justify-center space-x-2 mt-4"
+          >
             {[0, 1, 2].map((i) => (
               <motion.div
                 key={i}
@@ -297,7 +295,7 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
                 }}
               />
             ))}
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </div>
